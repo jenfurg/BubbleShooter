@@ -3,4 +3,8 @@ public class Game {
   Bubble[] bubbles;
   Shooter shooter;
   boolean awaitingAction;
+  
+  public void newBubbleRow() {
+  
+  }
 }
