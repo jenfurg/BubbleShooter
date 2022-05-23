@@ -4,6 +4,10 @@ public class Game {
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
   
+  public Game() {
+  
+  }
+  
   public void newBubbleRow() {
   
   }
