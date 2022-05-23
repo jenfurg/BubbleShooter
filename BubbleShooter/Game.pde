@@ -1,8 +1,8 @@
 public class Game {
-  int score;
-  Bubble[] bubbles;
-  Shooter shooter;
-  boolean awaitingAction;
+  int score = 0;
+  ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
+  Shooter shooter = new Shooter();
+  boolean awaitingAction = true;
   
   public void newBubbleRow() {
   
