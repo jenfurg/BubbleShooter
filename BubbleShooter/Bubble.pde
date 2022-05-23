@@ -20,4 +20,9 @@ public class Bubble {
   public void explode() {
   
   }
+  
+  public void display() {
+    fill(col);
+    ellipse(xcor, ycor, 20, 20);
+  }
 }
