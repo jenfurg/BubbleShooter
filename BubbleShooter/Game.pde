@@ -40,4 +40,13 @@ public class Game {
       nextColors[0] = makeRandomColor();
     }
   }
+  
+  public boolean gameOver() {
+    for (int i = 0; i < bubbles.size(); i++) {
+      if (bubbles.get(i).ycor > 1000) { // 1000 is subject to change
+        return true;
+      }
+    }
+    return false;
+  }
 }
