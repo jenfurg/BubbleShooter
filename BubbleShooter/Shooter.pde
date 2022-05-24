@@ -8,7 +8,5 @@ public class Shooter {
     
   }
   
-  void move(){
-    dx += 
 
 }
