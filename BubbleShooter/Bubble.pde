@@ -15,18 +15,26 @@ public class Bubble {
       
       if (b.ycor == ycor - 20 && b.xcor == xcor && b.col == col) {
         adjacents[0] = b;
+      } else {
+        adjacents[0] = null;
       }
       
       if (b.ycor == ycor + 20 && b.xcor == xcor && b.col == col) {
         adjacents[1] = b;
+      } else {
+        adjacents[0] = null;
       }
       
       if (b.xcor == xcor - 20 && b.ycor == ycor && b.col == col) {
         adjacents[2] = b;
+      } else {
+        adjacents[0] = null;
       }
       
       if (b.xcor == xcor + 20 && b.ycor == ycor && b.col == col) {
         adjacents[3] = b;
+      } else {
+        adjacents[0] = null;
       }
     
     }
@@ -34,7 +42,7 @@ public class Bubble {
   }
   
   public void evaluateCollision() {
-  
+    
   }
   
   public void explode() {
