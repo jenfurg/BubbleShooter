@@ -22,19 +22,19 @@ public class Bubble {
       if (b.ycor == ycor + 20 && b.xcor == xcor && b.col == col) {
         adjacents[1] = b;
       } else {
-        adjacents[0] = null;
+        adjacents[1] = null;
       }
       
       if (b.xcor == xcor - 20 && b.ycor == ycor && b.col == col) {
         adjacents[2] = b;
       } else {
-        adjacents[0] = null;
+        adjacents[2] = null;
       }
       
       if (b.xcor == xcor + 20 && b.ycor == ycor && b.col == col) {
         adjacents[3] = b;
       } else {
-        adjacents[0] = null;
+        adjacents[3] = null;
       }
     
     }
