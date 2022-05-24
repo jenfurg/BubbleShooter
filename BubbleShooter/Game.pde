@@ -6,6 +6,9 @@ public class Game {
   color[] nextColors = new color[3];
   
   public Game() {
+    for (int i = 0; i < 3; i++) {
+      nextColors[i] = makeRandomColor();
+    }
     // put 3 random colors in nextColors
   }
   
