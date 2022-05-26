@@ -2,7 +2,6 @@ public class Bubble {
   color col;
   Bubble[] adjacents = new Bubble[4];
   float xcor, ycor;
-  boolean exists = true;
   
   public Bubble(float x, float y, color colla) {
     xcor = x;
@@ -42,11 +41,15 @@ public class Bubble {
     // loop through adjacent bubbles and add them to the array if they are the same color
   }
   
-  public void evaluateCollision() {
+  public void evaluateCollision(ArrayList<Bubble> allBubbles) {
     ArrayList<Bubble> bubblesToPop = new ArrayList<Bubble>();
     collisionHelper(bubblesToPop);
-    for (int i = 0; i < bubblesToPop.size(); i++) {
-      bubblesToPop.get(i).exists = false;
+    for (int i = 0; i < allBubbles.size(); i++) {
+      if (bubblesToPop.contains(allBubbles.get(i))) {
+        allBubbles.get(i).explode();
+        allBubbles.remove(i);
+        i++;
+      }
     }
     
     
