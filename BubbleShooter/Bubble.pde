@@ -2,6 +2,7 @@ public class Bubble {
   color col;
   Bubble[] adjacents = new Bubble[4];
   float xcor, ycor;
+  boolean exists = true;
   
   public Bubble(float x, float y, color colla) {
     xcor = x;
@@ -42,7 +43,22 @@ public class Bubble {
   }
   
   public void evaluateCollision() {
+    ArrayList<Bubble> bubblesToPop = new ArrayList<Bubble>();
+    collisionHelper(bubblesToPop);
+    for (int i = 0; i < bubblesToPop.size(); i++) {
+      bubblesToPop.get(i).exists = false;
+    }
     
+    
+  }
+  
+  public void collisionHelper(ArrayList<Bubble> arr) {
+    for (int i = 0; i < adjacents.length; i++) {
+      if (adjacents[i] != null) {
+        arr.add(adjacents[i]);
+        adjacents[i].collisionHelper(arr);
+      }
+    }
   }
   
   public void explode() {

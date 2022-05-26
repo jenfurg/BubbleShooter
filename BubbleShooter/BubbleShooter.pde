@@ -1,4 +1,5 @@
 Game theGame = new Game();
+ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
 
 void setup() {
   // place a bunch of bubbles
@@ -14,9 +15,8 @@ void draw() {
    shooter.mult(50);
    translate(width/2,height-200);
    stroke(255);
-   strokeWeight(4);
+   strokeWeight(4);   
    line(0,0,shooter.x,shooter.y);
-   
   if (theGame.awaitingAction) {
     // have shooter follow mouse
   } else {
