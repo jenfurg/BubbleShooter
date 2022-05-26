@@ -6,7 +6,7 @@
  
  5/23: Leo wrote some constructors and some skeletons of functions for the Game, Bubble, and Shooter classes.
  
- 5/24: Leo wrote function to advance a row of bubbles and to check for game over (untested). Jennifer created the arrow, worked on the designs of the background. 
+ 5/24: Leo wrote function to advance a row of bubbles and to check for game over (untested). Jennifer created the vector, worked on the designs of the background. 
  
  5/25: Jennifer worked on the the vector, trying to limit its movement and working out a shooting function. 
  
