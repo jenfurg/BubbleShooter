@@ -15,7 +15,7 @@ void draw() {
    translate(width/2,height-200);
    stroke(255);
    strokeWeight(4);
-   line(0,0,shooter.x,shooter.y); 
+   line(0,0,shooter.x,shooter.y);
    
   if (theGame.awaitingAction) {
     // have shooter follow mouse
