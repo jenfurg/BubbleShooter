@@ -13,29 +13,29 @@ public class Game {
   }
   
   public color makeRandomColor() {
-    int k = (int) random(0,5);
+    int k = (int) random(0,6);
     
     color c;
     
     switch (k) {
       default: c = color(0);
       case 0: 
-        c = color(255, 0, 0);
+        c = color(255, 0, 0); // red
         break;
       case 1: 
-        c = color(213, 101, 234);
+        c = color(247, 15, 181); //pink
         break;
       case 2: 
-        c = color(0, 0, 255);
+        c = color(0, 0, 255); // dark blue
         break;
       case 3: 
-        c = color(28, 49, 171);
+        c = color(0, 255, 255);  // light blue
         break;
       case 4: 
-        c = color(255, 255, 0);
+        c = color(255, 255, 0); // yellow
         break;
       case 5: 
-        c = color(0,255,0);
+        c = color(0,255,0); // green
         break;
     }
     
