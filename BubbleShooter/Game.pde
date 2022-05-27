@@ -13,17 +13,30 @@ public class Game {
   }
   
   public color makeRandomColor() {
-    int k = (int)(6 * Math.random());
+    int k = (int) random(0,5);
     
     color c;
     
     switch (k) {
-      case 0: c = color(255, 0, 0);
-      case 1: c = color(213, 101, 234);
-      case 2: c = color(0, 0, 255);
-      case 3: c = color(28, 49, 171);
-      case 4: c = color(255, 255, 0);
-      default: c = color(0,255,0);
+      default: c = color(0);
+      case 0: 
+        c = color(255, 0, 0);
+        break;
+      case 1: 
+        c = color(213, 101, 234);
+        break;
+      case 2: 
+        c = color(0, 0, 255);
+        break;
+      case 3: 
+        c = color(28, 49, 171);
+        break;
+      case 4: 
+        c = color(255, 255, 0);
+        break;
+      case 5: 
+        c = color(0,255,0);
+        break;
     }
     
     // red, pink, light blue, dark blue, yellow, green
@@ -33,7 +46,7 @@ public class Game {
   public void newBubbleRow() {
     for (int i = 0; i < bubbles.size(); i++) {
       Bubble b = bubbles.get(i);
-      b.ycor -= 5; // number is subject to change
+      b.ycor += 20; // number is subject to change
     }
     
     for (int i = 0; i < width; i += 20) {
