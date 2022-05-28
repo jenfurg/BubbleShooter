@@ -46,10 +46,10 @@ public class Game {
   public void newBubbleRow() {
     for (int i = 0; i < bubbles.size(); i++) {
       Bubble b = bubbles.get(i);
-      b.ycor += 20; // number is subject to change
+      b.ycor += Bubble.BRADIUS; // number is subject to change
     }
     
-    for (int i = 0; i < width; i += 20) {
+    for (int i = 0; i < width; i += Bubble.BRADIUS) {
       bubbles.add(new Bubble(i, 0, nextColors[2]));
       nextColors[2] = nextColors[1];
       nextColors[1] = nextColors[0];
