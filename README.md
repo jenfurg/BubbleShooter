@@ -10,3 +10,6 @@
  
  5/25: Jennifer worked on the the vector, trying to limit its movement and working out a shooting function. 
  
+ 5/26: Leo rewrote the shooter display to be a constant length in the direction of the mouse.
+
+ 5/27: Leo made initial 50ish bubbles show up upon setup and fixed colors.
