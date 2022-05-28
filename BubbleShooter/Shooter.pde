@@ -5,7 +5,7 @@ public class Shooter {
   }
   
   public void shoot(Bubble bub, float xDest, float yDest) {
-    
+    System.out.println("Shooting a " + bub.col + " bubble to " + xDest + ", " + yDest);
   }
   
 
