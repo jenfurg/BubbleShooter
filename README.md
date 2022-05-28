@@ -13,3 +13,5 @@
  5/26: Leo rewrote the shooter display to be a constant length in the direction of the mouse.
 
  5/27: Leo made initial 50ish bubbles show up upon setup and fixed colors.
+ 
+ 5/28: Leo made the shooter smoothly fire a bubble in the direction of the mouse.
