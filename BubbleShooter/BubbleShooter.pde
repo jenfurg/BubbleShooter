@@ -1,5 +1,5 @@
 Game theGame = new Game();
-ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
+float a,b;
 
 void setup() {
   // place a bunch of bubbles
@@ -23,9 +23,10 @@ void draw() {
    
    float bigR = dist(mouseX, mouseY, width/2, height-200);
    float littleR = 100.0; //adjust this to adjust the shooter length
-      
-   float a = width/2;
-   float b = height-200;
+   
+   a = width/2;
+   b = height-200;
+
    
    float mY = mouseY;
    
@@ -45,4 +46,10 @@ void draw() {
     // trace path of bubble as it moves
   }
 
+}
+
+
+void mouseClicked() {
+  theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, mouseY);
+  theGame.awaitingAction = false;
 }
