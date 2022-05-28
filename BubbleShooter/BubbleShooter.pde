@@ -56,6 +56,7 @@ void draw() {
       fired.ycor -= theGame.shooter.ySpeed;
     } else {
       theGame.bubbles.add(fired);
+      theGame.awaitingAction = true;
     }
     // trace path of bubble as it moves
   }
@@ -64,6 +65,7 @@ void draw() {
 
 
 void mouseClicked() {
+  if (!theGame.awaitingAction) return;
   theGame.shooter.shoot(new Bubble(a-(Bubble.BRADIUS/2), b-(Bubble.BRADIUS/2), theGame.cycleColors()), mouseX, mouseY);
   theGame.awaitingAction = false;
 }
