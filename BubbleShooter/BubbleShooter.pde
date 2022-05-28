@@ -48,12 +48,8 @@ void draw() {
     Bubble fired = theGame.shooter.shot;
     fired.display();
     if (dist(theGame.shooter.aimX, theGame.shooter.aimY, fired.xcor, fired.ycor) > 5) {
-      int mod = 1;
-      if (theGame.shooter.aimX < fired.xcor) {
-        mod = -1;
-      }
-      fired.xcor += theGame.shooter.xSpeed * mod;
-      fired.ycor -= theGame.shooter.ySpeed;
+      fired.xcor += theGame.shooter.xSpeed;
+      fired.ycor += theGame.shooter.ySpeed;
     } else {
       theGame.bubbles.add(fired);
       theGame.awaitingAction = true;
