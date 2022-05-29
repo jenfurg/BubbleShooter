@@ -65,6 +65,10 @@ public class Bubble {
     }
   }
   
+  public void snapToGrid() {
+    // to be written
+  }
+  
   public void explode() {
   
   }
