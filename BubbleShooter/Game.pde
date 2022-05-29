@@ -71,4 +71,11 @@ public class Game {
     }
     return false;
   }
+  
+  public boolean checkCollision(Bubble shot) {
+    if (shot.xcor < 0 || shot.xcor > width - Bubble.BRADIUS) return true;
+    if (shot.ycor < 0 || shot.ycor > height - Bubble.BRADIUS) return true;
+    
+    return false;
+  }
 }
