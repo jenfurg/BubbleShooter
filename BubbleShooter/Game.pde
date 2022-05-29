@@ -57,7 +57,7 @@ public class Game {
       b.ycor += Bubble.BRADIUS; // number is subject to change
     }
     
-    for (int i = 0; i < width; i += Bubble.BRADIUS) {
+    for (float i = (Bubble.BRADIUS)/2; i < width; i += Bubble.BRADIUS) {
       bubbles.add(new Bubble(i, 0, nextColors[2]));
       cycleColors();
     }
@@ -66,6 +66,17 @@ public class Game {
   public boolean gameOver() {
     for (int i = 0; i < bubbles.size(); i++) {
       if (bubbles.get(i).ycor > 1000) { // 1000 is subject to change
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean checkCollision(Bubble shot) {
+    if (shot.xcor < 0 || shot.xcor > width - Bubble.BRADIUS) return true;
+    if (shot.ycor < 0 || shot.ycor > height - Bubble.BRADIUS) return true;
+    for (int i = 0; i < bubbles.size(); i++) {
+      if (dist(shot.xcor, shot.ycor, bubbles.get(i).xcor, bubbles.get(i).ycor) < Bubble.BRADIUS) {
         return true;
       }
     }

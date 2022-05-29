@@ -1,5 +1,5 @@
 Game theGame = new Game();
-float a,b;
+float a,b; // coordinates of base of shooter
 
 void setup() {
   // place a bunch of bubbles
@@ -47,11 +47,14 @@ void draw() {
   } else {
     Bubble fired = theGame.shooter.shot;
     fired.display();
-    if (dist(theGame.shooter.aimX, theGame.shooter.aimY, fired.xcor, fired.ycor) > 5) { // this boolean needs to be changed eventually (should keep moving until it collides with an edge or other bubble)
+    if (!theGame.checkCollision(fired)) { 
       fired.xcor += theGame.shooter.xSpeed;
       fired.ycor += theGame.shooter.ySpeed;
     } else {
+      fired.snapToGrid();
       theGame.bubbles.add(fired);
+      fired.evaluateAdjacents(theGame.bubbles);
+      fired.evaluateCollision(theGame.bubbles);
       theGame.awaitingAction = true;
     }
     // trace path of bubble as it moves
