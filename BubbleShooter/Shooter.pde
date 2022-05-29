@@ -13,7 +13,6 @@ public class Shooter {
     shot = bub;
     aimX = xDest;
     aimY = yDest;
-    System.out.println("Shooting a " + bub.col + " bubble to " + xDest + ", " + yDest);
     float k = calculateK();
     xSpeed = SPEED*k*(aimX - shot.xcor);
     ySpeed = SPEED*k*(aimY - shot.ycor);
