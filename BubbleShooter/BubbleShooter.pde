@@ -51,8 +51,10 @@ void draw() {
       fired.xcor += theGame.shooter.xSpeed;
       fired.ycor += theGame.shooter.ySpeed;
     } else {
-      // need to make it snap to grid evenly
+      fired.snapToGrid();
       theGame.bubbles.add(fired);
+      fired.evaluateAdjacents(theGame.bubbles);
+      fired.evaluateCollision(theGame.bubbles);
       theGame.awaitingAction = true;
     }
     // trace path of bubble as it moves
