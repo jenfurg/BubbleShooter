@@ -57,7 +57,7 @@ public class Game {
       b.ycor += Bubble.BRADIUS; // number is subject to change
     }
     
-    for (int i = 0; i < width; i += Bubble.BRADIUS) {
+    for (float i = (Bubble.BRADIUS)/2; i < width; i += Bubble.BRADIUS) {
       bubbles.add(new Bubble(i, 0, nextColors[2]));
       cycleColors();
     }

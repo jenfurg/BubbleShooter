@@ -47,10 +47,11 @@ void draw() {
   } else {
     Bubble fired = theGame.shooter.shot;
     fired.display();
-    if (!theGame.shooter.checkCollision()) { 
+    if (!theGame.checkCollision(fired)) { 
       fired.xcor += theGame.shooter.xSpeed;
       fired.ycor += theGame.shooter.ySpeed;
     } else {
+      // need to make it snap to grid evenly
       theGame.bubbles.add(fired);
       theGame.awaitingAction = true;
     }
