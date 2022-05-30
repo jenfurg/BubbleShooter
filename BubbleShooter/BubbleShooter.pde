@@ -65,6 +65,6 @@ void draw() {
 
 void mouseClicked() {
   if (!theGame.awaitingAction) return;
-  theGame.shooter.shoot(new Bubble(a-(Bubble.BRADIUS/2), b-(Bubble.BRADIUS/2), theGame.cycleColors()), mouseX, mouseY);
+  theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, mouseY);
   theGame.awaitingAction = false;
 }
