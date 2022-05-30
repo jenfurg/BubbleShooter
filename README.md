@@ -15,3 +15,5 @@
  5/27: Leo made initial 50ish bubbles show up upon setup and fixed colors.
  
  5/28: Leo made the shooter smoothly fire a bubble in the direction of the mouse.
+
+ 5/29: Leo made bubbles stop after hitting the edge or other bubbles, although they do not smoothly fit into a grid yet.
