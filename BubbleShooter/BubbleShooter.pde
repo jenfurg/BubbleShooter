@@ -43,6 +43,8 @@ void draw() {
   
   
   if (theGame.awaitingAction) {
+    Bubble base = new Bubble(a, b, theGame.nextColors[2]);
+    base.display();
     // have shooter follow mouse
   } else {
     Bubble fired = theGame.shooter.shot;
