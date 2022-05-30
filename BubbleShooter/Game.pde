@@ -4,6 +4,7 @@ public class Game {
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
   color[] nextColors = new color[3];
+  final static float STARTING_X = Bubble.BRADIUS/2;
   
   public Game() {
     for (int i = 0; i < 3; i++) {
@@ -57,8 +58,8 @@ public class Game {
       b.ycor += Bubble.BRADIUS; // number is subject to change
     }
     
-    for (float i = (Bubble.BRADIUS)/2; i < width; i += Bubble.BRADIUS) {
-      bubbles.add(new Bubble(i, 0, nextColors[2]));
+    for (float i = STARTING_X; i < width; i += Bubble.BRADIUS) {
+      bubbles.add(new Bubble(i, Bubble.BRADIUS, nextColors[2]));
       cycleColors();
     }
   }

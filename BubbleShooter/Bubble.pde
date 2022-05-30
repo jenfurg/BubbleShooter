@@ -66,6 +66,15 @@ public class Bubble {
   }
   
   public void snapToGrid() {
+    float xR = (xcor - Game.STARTING_X)/BRADIUS;
+    float yR = ycor/BRADIUS;
+    
+    int roundedX = round(xR);
+    int roundedY = round(yR);
+    
+    xcor = BRADIUS * roundedX + Game.STARTING_X;
+    ycor = BRADIUS * roundedY;
+    
     // to be written
   }
   
