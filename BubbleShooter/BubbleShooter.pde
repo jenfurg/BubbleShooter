@@ -39,7 +39,7 @@ void draw() {
    float h = a + (mouseX - a)*(littleR/bigR);
    float k = b + (mY - b)*(littleR/bigR);
    
-   line(width/2, height-200, h,k);
+   line(a, b, h,k);
   
   
   if (theGame.awaitingAction) {
