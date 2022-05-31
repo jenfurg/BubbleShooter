@@ -4,7 +4,10 @@ public class Game {
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
   color[] nextColors = new color[3];
-  final static float STARTING_X = Bubble.BRADIUS/2;
+  final float STARTING_X = Bubble.BRADIUS/2; // also to be changed later
+  final float ENDING_X = width; // to be changed
+  final float STARTING_Y = 0;
+  final float ENDING_Y = 1000;
   
   public Game() {
     for (int i = 0; i < 3; i++) {
@@ -58,15 +61,15 @@ public class Game {
       b.ycor += Bubble.BRADIUS; // number is subject to change
     }
     
-    for (float i = STARTING_X; i < width; i += Bubble.BRADIUS) {
-      bubbles.add(new Bubble(i, Bubble.BRADIUS, nextColors[2]));
+    for (float i = STARTING_X; i < ENDING_X; i += Bubble.BRADIUS) {
+      bubbles.add(new Bubble(i, STARTING_Y+Bubble.BRADIUS, nextColors[2])); // to be changed later
       cycleColors();
     }
   }
   
   public boolean gameOver() {
     for (int i = 0; i < bubbles.size(); i++) {
-      if (bubbles.get(i).ycor > 1000) { // 1000 is subject to change
+      if (bubbles.get(i).ycor > ENDING_Y) {
         return true;
       }
     }
