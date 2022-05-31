@@ -1,9 +1,11 @@
-Game theGame = new Game();
+Game theGame;
 float a,b; // coordinates of base of shooter
 
 void setup() {
   // place a bunch of bubbles
-  size(500,displayHeight);
+  size(800,displayHeight);
+  
+  theGame = new Game();
   
   a = width/2;
   b = height-200;
@@ -15,8 +17,12 @@ void setup() {
 
 void draw() {
   
+   background(0);
+   
+   fill(157,200,255);
+   rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
   
-   background(157,200,255);
+   //background(157,200,255);
    
    for (int i = 0; i < theGame.bubbles.size(); i++) {
       theGame.bubbles.get(i).display();

@@ -4,10 +4,11 @@ public class Game {
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
   color[] nextColors = new color[3];
-  final float STARTING_X = Bubble.BRADIUS/2; // also to be changed later
+  
+  final static float STARTING_X = Bubble.BRADIUS/2; // also to be changed later
   final float ENDING_X = width; // to be changed
-  final float STARTING_Y = 0;
-  final float ENDING_Y = 1000;
+  final static float STARTING_Y = 0;
+  final static float ENDING_Y = 1000;
   
   public Game() {
     for (int i = 0; i < 3; i++) {
