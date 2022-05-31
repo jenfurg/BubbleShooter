@@ -85,13 +85,9 @@ public class Bubble {
   public void display() {
     fill(col);
     strokeWeight(1);
-<<<<<<< HEAD
-    ellipse(xcor+10, ycor+10, 40, 40);
-=======
     ellipse(xcor, ycor, BRADIUS, BRADIUS);
     fill(255);
     strokeWeight(0);
     ellipse(xcor-(BRADIUS/4), ycor-(BRADIUS/4), (BRADIUS/5), (BRADIUS/5));
->>>>>>> 979acc5cb446893c722d3773311486bf292f9c89
   }
 }

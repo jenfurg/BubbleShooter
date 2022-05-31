@@ -4,7 +4,6 @@ public class Shooter {
   final static float SPEED = 15.0; 
   Bubble shot;
   float aimX, aimY;
-  
   public Shooter() {
   
   }
@@ -22,7 +21,6 @@ public class Shooter {
     float absV = dist(shot.xcor, shot.ycor, aimX, aimY);
     float j = 1/absV;
     return j;
->>>>>>> 979acc5cb446893c722d3773311486bf292f9c89
   }
   
 

@@ -4,11 +4,7 @@ public class Game {
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
   color[] nextColors = new color[3];
-<<<<<<< HEAD
-  float radiusX, radiusY; 
-=======
   final static float STARTING_X = Bubble.BRADIUS/2;
->>>>>>> 979acc5cb446893c722d3773311486bf292f9c89
   
   public Game() {
     for (int i = 0; i < 3; i++) {
@@ -59,23 +55,13 @@ public class Game {
   public void newBubbleRow() {
     for (int i = 0; i < bubbles.size(); i++) {
       Bubble b = bubbles.get(i);
-<<<<<<< HEAD
-      b.ycor += 40; // number is subject to change
-    }
-    
-    for (int i = 0; i < width; i += 40) {
-      bubbles.add(new Bubble(i, 0, nextColors[2]));
-      nextColors[2] = nextColors[1];
-      nextColors[1] = nextColors[0];
-      nextColors[0] = makeRandomColor();
-=======
       b.ycor += Bubble.BRADIUS; // number is subject to change
     }
     
     for (float i = STARTING_X; i < width; i += Bubble.BRADIUS) {
       bubbles.add(new Bubble(i, Bubble.BRADIUS, nextColors[2]));
       cycleColors();
->>>>>>> 979acc5cb446893c722d3773311486bf292f9c89
+
     }
   }
   
