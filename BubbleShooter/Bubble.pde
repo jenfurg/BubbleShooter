@@ -2,7 +2,7 @@ public class Bubble {
   color col;
   Bubble[] adjacents = new Bubble[4];
   float xcor, ycor;
-  final static float BRADIUS = 40;
+  final static float BRADIUS = 30;
   
   public Bubble(float x, float y, color colla) {
     xcor = x;
@@ -66,13 +66,13 @@ public class Bubble {
   }
   
   public void snapToGrid() {
-    float xR = (xcor - Game.STARTING_X)/BRADIUS;
+    float xR = (xcor)/BRADIUS;
     float yR = ycor/BRADIUS;
     
     int roundedX = round(xR);
     int roundedY = round(yR);
     
-    xcor = BRADIUS * roundedX + Game.STARTING_X;
+    xcor = BRADIUS * roundedX;
     ycor = BRADIUS * roundedY;
     
     // to be written
