@@ -4,6 +4,7 @@ public class Game {
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
   color[] nextColors = new color[3];
+  final static float STARTING_X = Bubble.BRADIUS/2;
   
   public Game() {
     for (int i = 0; i < 3; i++) {
@@ -43,23 +44,40 @@ public class Game {
     return c;
   }
   
+  public color cycleColors() {
+    color c = nextColors[2];
+     nextColors[2] = nextColors[1];
+     nextColors[1] = nextColors[0];
+     nextColors[0] = makeRandomColor();
+     return c;
+  }
+  
   public void newBubbleRow() {
     for (int i = 0; i < bubbles.size(); i++) {
       Bubble b = bubbles.get(i);
-      b.ycor += 20; // number is subject to change
+      b.ycor += Bubble.BRADIUS; // number is subject to change
     }
     
-    for (int i = 0; i < width; i += 20) {
-      bubbles.add(new Bubble(i, 0, nextColors[2]));
-      nextColors[2] = nextColors[1];
-      nextColors[1] = nextColors[0];
-      nextColors[0] = makeRandomColor();
+    for (float i = STARTING_X; i < width; i += Bubble.BRADIUS) {
+      bubbles.add(new Bubble(i, Bubble.BRADIUS, nextColors[2]));
+      cycleColors();
     }
   }
   
   public boolean gameOver() {
     for (int i = 0; i < bubbles.size(); i++) {
       if (bubbles.get(i).ycor > 1000) { // 1000 is subject to change
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean checkCollision(Bubble shot) {
+    if (shot.xcor < 0 || shot.xcor > width - Bubble.BRADIUS) return true;
+    if (shot.ycor < 0 || shot.ycor > height - Bubble.BRADIUS) return true;
+    for (int i = 0; i < bubbles.size(); i++) {
+      if (dist(shot.xcor, shot.ycor, bubbles.get(i).xcor, bubbles.get(i).ycor) < Bubble.BRADIUS) {
         return true;
       }
     }
