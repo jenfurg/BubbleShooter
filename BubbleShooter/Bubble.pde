@@ -45,6 +45,7 @@ public class Bubble {
   public void evaluateCollision(ArrayList<Bubble> allBubbles) {
     ArrayList<Bubble> bubblesToPop = new ArrayList<Bubble>();
     collisionHelper(bubblesToPop);
+    System.out.println(bubblesToPop);
     for (int i = 0; i < allBubbles.size(); i++) {
       if (bubblesToPop.contains(allBubbles.get(i))) {
         allBubbles.get(i).explode();
@@ -58,6 +59,7 @@ public class Bubble {
   
   public void collisionHelper(ArrayList<Bubble> arr) {
     for (int i = 0; i < adjacents.length; i++) {
+      System.out.println("looping " + adjacents[i]);
       if (adjacents[i] != null) {
         arr.add(adjacents[i]);
         adjacents[i].collisionHelper(arr);
