@@ -2,6 +2,7 @@ public class Bubble {
   color col;
   Bubble[] adjacents = new Bubble[4];
   float xcor, ycor;
+  final static float BRADIUS = 40;
   
   public Bubble(float x, float y, color colla) {
     xcor = x;
@@ -13,25 +14,25 @@ public class Bubble {
     for (int i = 0; i < bubbles.size(); i++) {
       Bubble b = bubbles.get(i);
       
-      if (b.ycor == ycor - 20 && b.xcor == xcor && b.col == col) {
+      if (b.ycor == ycor - BRADIUS && b.xcor == xcor && b.col == col) {
         adjacents[0] = b;
       } else {
         adjacents[0] = null;
       }
       
-      if (b.ycor == ycor + 20 && b.xcor == xcor && b.col == col) {
+      if (b.ycor == ycor + BRADIUS && b.xcor == xcor && b.col == col) {
         adjacents[1] = b;
       } else {
         adjacents[1] = null;
       }
       
-      if (b.xcor == xcor - 20 && b.ycor == ycor && b.col == col) {
+      if (b.xcor == xcor -BRADIUS && b.ycor == ycor && b.col == col) {
         adjacents[2] = b;
       } else {
         adjacents[2] = null;
       }
       
-      if (b.xcor == xcor + 20 && b.ycor == ycor && b.col == col) {
+      if (b.xcor == xcor + BRADIUS && b.ycor == ycor && b.col == col) {
         adjacents[3] = b;
       } else {
         adjacents[3] = null;
@@ -64,6 +65,19 @@ public class Bubble {
     }
   }
   
+  public void snapToGrid() {
+    float xR = (xcor - Game.STARTING_X)/BRADIUS;
+    float yR = ycor/BRADIUS;
+    
+    int roundedX = round(xR);
+    int roundedY = round(yR);
+    
+    xcor = BRADIUS * roundedX + Game.STARTING_X;
+    ycor = BRADIUS * roundedY;
+    
+    // to be written
+  }
+  
   public void explode() {
   
   }
@@ -71,6 +85,13 @@ public class Bubble {
   public void display() {
     fill(col);
     strokeWeight(1);
+<<<<<<< HEAD
     ellipse(xcor+10, ycor+10, 40, 40);
+=======
+    ellipse(xcor, ycor, BRADIUS, BRADIUS);
+    fill(255);
+    strokeWeight(0);
+    ellipse(xcor-(BRADIUS/4), ycor-(BRADIUS/4), (BRADIUS/5), (BRADIUS/5));
+>>>>>>> 979acc5cb446893c722d3773311486bf292f9c89
   }
 }

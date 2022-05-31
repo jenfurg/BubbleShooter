@@ -11,3 +11,11 @@
  5/25: Jennifer worked on the the vector, trying to limit its movement and working out a shooting function. 
  
  5/26: Leo rewrote the shooter display to be a constant length in the direction of the mouse.
+
+ 5/27: Leo made initial 50ish bubbles show up upon setup and fixed colors.
+ 
+ 5/28: Leo made the shooter smoothly fire a bubble in the direction of the mouse.
+
+ 5/29: Leo made bubbles stop after hitting the edge or other bubbles, although they do not smoothly fit into a grid yet.
+ 
+ 5/30: Leo made the bubbles snap to grid after having landed.
