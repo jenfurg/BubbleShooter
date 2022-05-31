@@ -19,3 +19,5 @@
  5/29: Leo made bubbles stop after hitting the edge or other bubbles, although they do not smoothly fit into a grid yet.
  
  5/30: Leo made the bubbles snap to grid after having landed.
+
+ 5/31: Leo worked on making bubble shooting screen appear within a larger (currently empty) screen.
