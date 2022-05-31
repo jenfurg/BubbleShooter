@@ -4,6 +4,7 @@ public class Game {
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
   color[] nextColors = new color[3];
+  float radiusX, radiusY; 
   
   public Game() {
     for (int i = 0; i < 3; i++) {
@@ -46,10 +47,10 @@ public class Game {
   public void newBubbleRow() {
     for (int i = 0; i < bubbles.size(); i++) {
       Bubble b = bubbles.get(i);
-      b.ycor += 20; // number is subject to change
+      b.ycor += 40; // number is subject to change
     }
     
-    for (int i = 0; i < width; i += 20) {
+    for (int i = 0; i < width; i += 40) {
       bubbles.add(new Bubble(i, 0, nextColors[2]));
       nextColors[2] = nextColors[1];
       nextColors[1] = nextColors[0];

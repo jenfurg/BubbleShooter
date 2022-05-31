@@ -70,6 +70,7 @@ public class Bubble {
   
   public void display() {
     fill(col);
-    ellipse(xcor, ycor, 20, 20);
+    strokeWeight(1);
+    ellipse(xcor+10, ycor+10, 40, 40);
   }
 }

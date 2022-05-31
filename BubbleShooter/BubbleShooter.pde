@@ -37,7 +37,10 @@ void draw() {
    float k = b + (mY - b)*(littleR/bigR);
    
    line(width/2, height-200, h,k);
-  
+   
+   if (mousePressed){
+     theGame.awaitingAction = true;
+   }
   
   if (theGame.awaitingAction) {
     // have shooter follow mouse
