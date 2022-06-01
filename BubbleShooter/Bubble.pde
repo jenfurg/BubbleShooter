@@ -3,6 +3,7 @@ public class Bubble {
   Bubble[] adjacents = new Bubble[4];
   float xcor, ycor;
   final static float BRADIUS = 30;
+  boolean marked = false;
   
   public Bubble(float x, float y, color colla) {
     xcor = x;
@@ -58,33 +59,31 @@ public class Bubble {
   }
   
   public void evaluateCollision(ArrayList<Bubble> allBubbles) {
-    ArrayList<Bubble> bubblesToPop = new ArrayList<Bubble>();
-    bubblesToPop.add(this);
-    collisionHelper(bubblesToPop);
-    if (bubblesToPop.size() < 3) return;
+    ArrayList popList = new ArrayList<Bubble>();
+    colHelp(col, popList);
+    if (popList.size() < 3) return;
     for (int i = 0; i < allBubbles.size(); i++) {
-      if (bubblesToPop.contains(allBubbles.get(i))) {
+      if (popList.contains(allBubbles.get(i))) {
         allBubbles.get(i).explode();
         allBubbles.remove(i);
-        i++;
+        i--;
       }
     }
-    
-    
-    // need to make sure the chain length exceeds 3
-    // needs to somehow remove itself
-    
     
   }
   
-  public void collisionHelper(ArrayList<Bubble> arr) {
+  public void colHelp(color seek, ArrayList<Bubble> popList) {
+    if (marked) return;
+    if (this.col != seek) return;
+    popList.add(this);
+    marked = true;
     for (int i = 0; i < adjacents.length; i++) {
       if (adjacents[i] != null) {
-        arr.add(adjacents[i]);
-        adjacents[i].collisionHelper(arr);
+        adjacents[i].colHelp(seek, popList);
       }
     }
   }
+ 
   
   public void snapToGrid() {
     float xR = (xcor)/BRADIUS;
