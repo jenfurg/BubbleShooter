@@ -18,4 +18,6 @@
 
  5/29: Leo made bubbles stop after hitting the edge or other bubbles, although they do not smoothly fit into a grid yet.
  
- 5/30: Leo made the bubbles snap to grid after having landed.
+ 5/30: Leo made the bubbles snap to grid after having landed. Jennifer worked on the speed at which the shooter would shoot the bubble. 
+
+ 5/31: Leo worked on making bubble shooting screen appear within a larger (currently empty) screen. Jennifer worked on the formatting of the bubble shooter to emulate the real game, started to work on adding buttons, "pause", "play", etc. 

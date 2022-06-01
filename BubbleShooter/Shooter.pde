@@ -21,7 +21,6 @@ public class Shooter {
     float absV = dist(shot.xcor, shot.ycor, aimX, aimY);
     float j = 1/absV;
     return j;
-
   }
   
 
