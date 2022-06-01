@@ -1,12 +1,14 @@
-Game theGame = new Game();
+Game theGame;
 float a,b; // coordinates of base of shooter
 
 void setup() {
   // place a bunch of bubbles
-  size(500,displayHeight);
+  size(1000, 850);
   
-  a = width/2;
-  b = height-200;
+  theGame = new Game();
+  
+  a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
+  b = theGame.ENDING_Y - 200;
   
   for (int i = 0; i < 10; i++) {
     theGame.newBubbleRow();
@@ -15,8 +17,12 @@ void setup() {
 
 void draw() {
   
+   background(0);
+   
+   fill(157,200,255);
+   rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
   
-   background(157,200,255);
+   //background(157,200,255);
    
    for (int i = 0; i < theGame.bubbles.size(); i++) {
       theGame.bubbles.get(i).display();
@@ -24,7 +30,7 @@ void draw() {
    
    strokeWeight(4);   
    
-   float bigR = dist(mouseX, mouseY, width/2, height-200);
+   float bigR = dist(mouseX, mouseY, a, b);
    float littleR = 100.0; //adjust this to adjust the shooter length
    
    
@@ -39,14 +45,14 @@ void draw() {
    float h = a + (mouseX - a)*(littleR/bigR);
    float k = b + (mY - b)*(littleR/bigR);
    
-   line(width/2, height-200, h,k);
-   
-   if (mousePressed){
-     theGame.awaitingAction = true;
-   }
-  
+   line(a, b, h,k);
+
   if (theGame.awaitingAction) {
+    Bubble base = new Bubble(a, b, theGame.nextColors[2]);
+    base.display();
     // have shooter follow mouse
+    Bubble g = new Bubble(a,b, theGame.nextColors[2]);
+    g.display();
   } else {
     Bubble fired = theGame.shooter.shot;
     fired.display();

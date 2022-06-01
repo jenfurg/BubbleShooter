@@ -2,7 +2,7 @@ public class Bubble {
   color col;
   Bubble[] adjacents = new Bubble[4];
   float xcor, ycor;
-  final static float BRADIUS = 40;
+  final static float BRADIUS = 30;
   
   public Bubble(float x, float y, color colla) {
     xcor = x;
@@ -45,6 +45,7 @@ public class Bubble {
   public void evaluateCollision(ArrayList<Bubble> allBubbles) {
     ArrayList<Bubble> bubblesToPop = new ArrayList<Bubble>();
     collisionHelper(bubblesToPop);
+    System.out.println(bubblesToPop);
     for (int i = 0; i < allBubbles.size(); i++) {
       if (bubblesToPop.contains(allBubbles.get(i))) {
         allBubbles.get(i).explode();
@@ -58,6 +59,7 @@ public class Bubble {
   
   public void collisionHelper(ArrayList<Bubble> arr) {
     for (int i = 0; i < adjacents.length; i++) {
+      System.out.println("looping " + adjacents[i]);
       if (adjacents[i] != null) {
         arr.add(adjacents[i]);
         adjacents[i].collisionHelper(arr);
@@ -66,13 +68,13 @@ public class Bubble {
   }
   
   public void snapToGrid() {
-    float xR = (xcor - Game.STARTING_X)/BRADIUS;
+    float xR = (xcor)/BRADIUS;
     float yR = ycor/BRADIUS;
     
     int roundedX = round(xR);
     int roundedY = round(yR);
     
-    xcor = BRADIUS * roundedX + Game.STARTING_X;
+    xcor = BRADIUS * roundedX;
     ycor = BRADIUS * roundedY;
     
     // to be written
