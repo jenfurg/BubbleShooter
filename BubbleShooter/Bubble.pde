@@ -74,6 +74,10 @@ public class Bubble {
     }
     
     
+    // need to make sure the chain length exceeds 3
+    // needs to somehow remove itself
+    
+    
   }
   
   public void collisionHelper(ArrayList<Bubble> arr) {
