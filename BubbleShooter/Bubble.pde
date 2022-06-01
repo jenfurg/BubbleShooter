@@ -59,7 +59,9 @@ public class Bubble {
   
   public void evaluateCollision(ArrayList<Bubble> allBubbles) {
     ArrayList<Bubble> bubblesToPop = new ArrayList<Bubble>();
+    bubblesToPop.add(this);
     collisionHelper(bubblesToPop);
+    if (bubblesToPop.size() < 3) return;
     for (int i = 0; i < allBubbles.size(); i++) {
       if (bubblesToPop.contains(allBubbles.get(i))) {
         allBubbles.get(i).explode();
