@@ -78,7 +78,7 @@ public class Game {
   }
   
   public boolean checkCollision(Bubble shot) {
-    if (shot.xcor < Bubble.BRADIUS || shot.xcor > width - Bubble.BRADIUS) return true;
+    if (shot.xcor < STARTING_X + Bubble.BRADIUS || shot.xcor > ENDING_X - Bubble.BRADIUS) return true;
     if (shot.ycor < 0 || shot.ycor > height - Bubble.BRADIUS) return true;
     for (int i = 0; i < bubbles.size(); i++) {
       if (dist(shot.xcor, shot.ycor, bubbles.get(i).xcor, bubbles.get(i).ycor) < Bubble.BRADIUS) {
