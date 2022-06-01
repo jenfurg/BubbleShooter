@@ -26,6 +26,8 @@ void draw() {
    
    for (int i = 0; i < theGame.bubbles.size(); i++) {
       theGame.bubbles.get(i).display();
+      theGame.bubbles.get(i).evaluateAdjacents(theGame.bubbles);
+      theGame.bubbles.get(i).marked = false;
     }
    
    strokeWeight(4);   
