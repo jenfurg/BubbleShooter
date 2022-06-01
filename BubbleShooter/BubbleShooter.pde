@@ -17,7 +17,7 @@ void setup() {
 
 void draw() {
   
-   background(0);
+   background(150,200,250);
    
    fill(157,200,255);
    rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
