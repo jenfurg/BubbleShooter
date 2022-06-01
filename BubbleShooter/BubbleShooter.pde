@@ -1,6 +1,9 @@
 Game theGame;
 float a,b; // coordinates of base of shooter
-
+int pauseX, pauseY; 
+int resetX, resetY; 
+int timerX, timerY; 
+int modeX, modeY; // coordinates for the buttons 
 void setup() {
   // place a bunch of bubbles
   size(1000, 850);
