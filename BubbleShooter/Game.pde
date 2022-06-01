@@ -65,6 +65,7 @@ public class Game {
     for (float i = STARTING_X+Bubble.BRADIUS/2; i < ENDING_X; i += Bubble.BRADIUS) {
       bubbles.add(new Bubble(i, STARTING_Y+Bubble.BRADIUS, nextColors[2])); // to be changed later
       cycleColors();
+
     }
   }
   

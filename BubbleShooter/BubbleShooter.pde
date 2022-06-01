@@ -1,6 +1,10 @@
 Game theGame;
 float a,b; // coordinates of base of shooter
-
+int pauseX, pauseY; 
+int resetX, resetY; 
+int helpX, helpY; 
+int modeX, modeY; // coordinates for the buttons 
+String messages = "Hello! Welcome to the BubbleShooter game. Here is a quick tutorial"; 
 void setup() {
   // place a bunch of bubbles
   size(1000, 850);
@@ -17,13 +21,16 @@ void setup() {
 
 void draw() {
   
+<<<<<<< HEAD
    background(150,200,250);
+=======
+   background(155,190,240);
+>>>>>>> Jennifer
    
    fill(157,200,255);
    rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
   
-   //background(157,200,255);
-   
+  
    for (int i = 0; i < theGame.bubbles.size(); i++) {
       theGame.bubbles.get(i).display();
     }
@@ -46,8 +53,7 @@ void draw() {
    float k = b + (mY - b)*(littleR/bigR);
    
    line(a, b, h,k);
-  
-  
+
   if (theGame.awaitingAction) {
     Bubble base = new Bubble(a, b, theGame.nextColors[2]);
     base.display();
