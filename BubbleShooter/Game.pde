@@ -4,7 +4,11 @@ public class Game {
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
   color[] nextColors = new color[3];
-  final static float STARTING_X = Bubble.BRADIUS/2;
+  
+  final static float STARTING_X = Bubble.BRADIUS/2; // also to be changed later
+  final float ENDING_X = STARTING_X + 700; // to be changed
+  final static float STARTING_Y = Bubble.BRADIUS;
+  final float ENDING_Y = height - 100;
   
   public Game() {
     for (int i = 0; i < 3; i++) {
@@ -58,15 +62,16 @@ public class Game {
       b.ycor += Bubble.BRADIUS; // number is subject to change
     }
     
-    for (float i = STARTING_X; i < width; i += Bubble.BRADIUS) {
-      bubbles.add(new Bubble(i, Bubble.BRADIUS, nextColors[2]));
+    for (float i = STARTING_X+Bubble.BRADIUS/2; i < ENDING_X; i += Bubble.BRADIUS) {
+      bubbles.add(new Bubble(i, STARTING_Y+Bubble.BRADIUS, nextColors[2])); // to be changed later
       cycleColors();
+
     }
   }
   
   public boolean gameOver() {
     for (int i = 0; i < bubbles.size(); i++) {
-      if (bubbles.get(i).ycor > 1000) { // 1000 is subject to change
+      if (bubbles.get(i).ycor > ENDING_Y) {
         return true;
       }
     }
@@ -74,8 +79,8 @@ public class Game {
   }
   
   public boolean checkCollision(Bubble shot) {
-    if (shot.xcor < 0 || shot.xcor > width - Bubble.BRADIUS) return true;
-    if (shot.ycor < 0 || shot.ycor > height - Bubble.BRADIUS) return true;
+    if (shot.xcor < STARTING_X + Bubble.BRADIUS || shot.xcor > ENDING_X - Bubble.BRADIUS) return true;
+    if (shot.ycor < STARTING_Y + Bubble.BRADIUS || shot.ycor > ENDING_Y - Bubble.BRADIUS) return true;
     for (int i = 0; i < bubbles.size(); i++) {
       if (dist(shot.xcor, shot.ycor, bubbles.get(i).xcor, bubbles.get(i).ycor) < Bubble.BRADIUS) {
         return true;

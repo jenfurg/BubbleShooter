@@ -4,7 +4,6 @@ public class Shooter {
   final static float SPEED = 15.0; 
   Bubble shot;
   float aimX, aimY;
-  
   public Shooter() {
   
   }
