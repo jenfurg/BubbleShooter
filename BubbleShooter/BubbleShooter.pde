@@ -38,8 +38,8 @@ void draw() {
    
    float mY = mouseY;
    
-   if (mY > height - 200) {
-     mY = height - 200;
+   if (mY > b) {
+     mY = b;
    }
    
    float h = a + (mouseX - a)*(littleR/bigR);
@@ -51,9 +51,6 @@ void draw() {
   if (theGame.awaitingAction) {
     Bubble base = new Bubble(a, b, theGame.nextColors[2]);
     base.display();
-    // have shooter follow mouse
-    Bubble g = new Bubble(a,b, theGame.nextColors[2]);
-    g.display();
   } else {
     Bubble fired = theGame.shooter.shot;
     fired.display();
@@ -75,6 +72,10 @@ void draw() {
 
 void mouseClicked() {
   if (!theGame.awaitingAction) return;
-  theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, mouseY);
+  if (mouseY < b) {
+     theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, mouseY);
+  } else {
+    theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, b);
+  }
   theGame.awaitingAction = false;
 }
