@@ -2,8 +2,9 @@ Game theGame;
 float a,b; // coordinates of base of shooter
 int pauseX, pauseY; 
 int resetX, resetY; 
-int timerX, timerY; 
+int helpX, helpY; 
 int modeX, modeY; // coordinates for the buttons 
+String messages = "Hello! Welcome to the BubbleShooter game. Here is a quick tutorial"; 
 void setup() {
   // place a bunch of bubbles
   size(1000, 850);
