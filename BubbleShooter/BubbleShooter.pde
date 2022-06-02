@@ -93,8 +93,10 @@ void draw() {
 void mouseClicked() {
   if (mouseX>765 && mouseX<885 && mouseY>190 && mouseY<310)
   setup(); 
+  
+  if (mouseX < theGame.STARTING_X || mouseX > theGame.ENDING_X || mouseY < theGame.STARTING_Y || mouseY > theGame.ENDING_Y) return;
  
-  if (!theGame.awaitingAction & mouseY < theGame.ENDING_Y & mouseX < theGame.ENDING_X) return;
+  if (!theGame.awaitingAction) return;
   else if (mouseY < b & mouseY < theGame.ENDING_Y & mouseX < theGame.ENDING_X) {
      theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, mouseY);
   } else {
