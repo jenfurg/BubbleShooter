@@ -80,7 +80,13 @@ void draw() {
       fired.snapToGrid();
       theGame.bubbles.add(fired);
       fired.evaluateAdjacents(theGame.bubbles);
-      theGame.score += 10*fired.evaluateCollision(theGame.bubbles);
+      int pts = fired.evaluateCollision(theGame.bubbles);
+      if (pts == 0) theGame.newRow++;
+      theGame.score += 10*pts;
+      if (theGame.newRow == 4) { // 4 is subject to change
+      theGame.newBubbleRow();
+      theGame.newRow = 0;
+    };
       theGame.awaitingAction = true;
     }
     // trace path of bubble as it moves
