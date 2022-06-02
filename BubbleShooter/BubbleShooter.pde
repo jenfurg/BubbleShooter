@@ -91,6 +91,9 @@ void draw() {
     }
     // trace path of bubble as it moves
   }
+  if (theGame.gameOver()) {
+    // end game
+  }
 
 }
 
@@ -110,5 +113,3 @@ void mouseClicked() {
   }
   theGame.awaitingAction = false;
 }
-
-// 6/1 next steps: buttons outside subscreen, points, new bubble row appears after a few failures
