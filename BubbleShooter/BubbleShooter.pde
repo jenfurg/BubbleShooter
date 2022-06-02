@@ -40,6 +40,8 @@ void draw() {
    //textFont(mono);
    text("HELP",860,305);
    
+   
+   text("Points: " + theGame.score, 810, 200); 
   
    
   
