@@ -4,15 +4,15 @@
  
  
  
- 5/23: Leo wrote some constructors and some skeletons of functions for the Game, Bubble, and Shooter classes.
+ 5/23: Leo wrote some constructors and some skeletons of functions for the Game, Bubble, and Shooter classes. Jennifer worked on finding images to use for the setup of the game (ended up not being used, because built-in vector was more functional). 
  
- 5/24: Leo wrote function to advance a row of bubbles and to check for game over (untested). Jennifer created the vector, worked on the designs of the background. 
+ 5/24: Leo wrote function to advance a row of bubbles and to check for game over (untested). Jennifer worked on the setup, worked on the designs of the background, and created the vector.
  
- 5/25: Jennifer worked on the the vector, trying to limit its movement and working out a shooting function. 
+ 5/25: Jennifer worked on the the vector, in order to limit its movements to the screen and working out a shooting function. 
  
- 5/26: Leo rewrote the shooter display to be a constant length in the direction of the mouse.
+ 5/26: Leo rewrote the shooter display to be a constant length in the direction of the mouse. Jennifer worked on setting up the background formatting. 
 
- 5/27: Leo made initial 50ish bubbles show up upon setup and fixed colors.
+ 5/27: Leo made initial 50ish bubbles show up upon setup and fixed colors. Jennifer worked on the appearance of the bubbles, making sure they fit the screen and appeared as they did in the game. 
  
  5/28: Leo made the shooter smoothly fire a bubble in the direction of the mouse.
 
@@ -22,4 +22,6 @@
 
  5/31: Leo worked on making bubble shooting screen appear within a larger (currently empty) screen. Jennifer worked on the formatting of the bubble shooter to emulate the real game, started to work on adding buttons, "pause", "play", etc. 
 
- 6/1: Leo made bubbles pop if in chains of three or more.
+ 6/1: Leo made bubbles pop if in chains of three or more. Jennifer worked on fixing the buttons, making sure that mouseX and mouseY wouldn't be affected if the buttons were clicked + created a "How To Play" image for pop-up. 
+
+ 6/2: Leo added awarding of points and making a new row appear after a certain amount of failures.
