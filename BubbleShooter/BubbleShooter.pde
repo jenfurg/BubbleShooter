@@ -80,10 +80,19 @@ void draw() {
       fired.snapToGrid();
       theGame.bubbles.add(fired);
       fired.evaluateAdjacents(theGame.bubbles);
-      fired.evaluateCollision(theGame.bubbles);
+      int pts = fired.evaluateCollision(theGame.bubbles);
+      if (pts == 0) theGame.newRow++;
+      theGame.score += 10*pts;
+      if (theGame.newRow == 4) { // 4 is subject to change
+      theGame.newBubbleRow();
+      theGame.newRow = 0;
+    };
       theGame.awaitingAction = true;
     }
     // trace path of bubble as it moves
+  }
+  if (theGame.gameOver()) {
+    // end game
   }
 
 }
@@ -93,8 +102,10 @@ void draw() {
 void mouseClicked() {
   if (mouseX>765 && mouseX<885 && mouseY>190 && mouseY<310)
   setup(); 
+  
+  if (mouseX < theGame.STARTING_X || mouseX > theGame.ENDING_X || mouseY < theGame.STARTING_Y || mouseY > theGame.ENDING_Y) return;
  
-  if (!theGame.awaitingAction & mouseY < theGame.ENDING_Y & mouseX < theGame.ENDING_X) return;
+  if (!theGame.awaitingAction) return;
   else if (mouseY < b & mouseY < theGame.ENDING_Y & mouseX < theGame.ENDING_X) {
      theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, mouseY);
   } else {

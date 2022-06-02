@@ -4,6 +4,7 @@ public class Game {
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
   color[] nextColors = new color[3];
+  int newRow = 0;
   
   final static float STARTING_X = Bubble.BRADIUS/2; // also to be changed later
   final float ENDING_X = STARTING_X + 700; // to be changed
