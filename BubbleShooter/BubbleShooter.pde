@@ -9,6 +9,7 @@ void setup() {
   // place a bunch of bubbles
   size(1000, 850);
   
+  //ellipse(800,200,40,40); 
   theGame = new Game();
   
   a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
@@ -19,13 +20,28 @@ void setup() {
   }
 }
 
+
 void draw() {
   
    background(155,190,240);
    
    fill(157,200,255);
    rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
+    //reset button
+   fill(0,200,0);
+   ellipse(825,250,60,60); 
+   fill(255,255,255);
+   //textFont(mono);
+   text("RESET",810,255);
+   
+   fill(0,200,200);
+   ellipse(875,300,60,60); 
+   fill(255,255,255);
+   //textFont(mono);
+   text("HELP",860,305);
+   
   
+   
   
    for (int i = 0; i < theGame.bubbles.size(); i++) {
       theGame.bubbles.get(i).display();
@@ -38,8 +54,7 @@ void draw() {
    float bigR = dist(mouseX, mouseY, a, b);
    float littleR = 100.0; //adjust this to adjust the shooter length
    
-   
-
+  
    
    float mY = mouseY;
    
@@ -74,9 +89,13 @@ void draw() {
 }
 
 
+
 void mouseClicked() {
-  if (!theGame.awaitingAction) return;
-  if (mouseY < b) {
+  if (mouseX>765 && mouseX<885 && mouseY>190 && mouseY<310)
+  setup(); 
+ 
+  if (!theGame.awaitingAction & mouseY < theGame.ENDING_Y & mouseX < theGame.ENDING_X) return;
+  else if (mouseY < b & mouseY < theGame.ENDING_Y & mouseX < theGame.ENDING_X) {
      theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, mouseY);
   } else {
     theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, b);
