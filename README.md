@@ -4,11 +4,11 @@
  
  
  
- 5/23: Leo wrote some constructors and some skeletons of functions for the Game, Bubble, and Shooter classes.
+ 5/23: Leo wrote some constructors and some skeletons of functions for the Game, Bubble, and Shooter classes. Jennifer worked on finding images to use for the setup of the game (ended up not being used, because built-in vector was more functional). 
  
- 5/24: Leo wrote function to advance a row of bubbles and to check for game over (untested). Jennifer created the vector, worked on the designs of the background. 
+ 5/24: Leo wrote function to advance a row of bubbles and to check for game over (untested). Jennifer worked on the setup, worked on the designs of the background, and created the vector.
  
- 5/25: Jennifer worked on the the vector, trying to limit its movement and working out a shooting function. 
+ 5/25: Jennifer worked on the the vector, in order to limit its movements to the screen and working out a shooting function. 
  
  5/26: Leo rewrote the shooter display to be a constant length in the direction of the mouse. Jennifer worked on setting up the background formatting. 
 
