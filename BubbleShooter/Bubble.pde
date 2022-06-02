@@ -3,6 +3,7 @@ public class Bubble {
   Bubble[] adjacents = new Bubble[4];
   float xcor, ycor;
   final static float BRADIUS = 30;
+  boolean marked = false;
   
   public Bubble(float x, float y, color colla) {
     xcor = x;
@@ -14,58 +15,75 @@ public class Bubble {
     for (int i = 0; i < bubbles.size(); i++) {
       Bubble b = bubbles.get(i);
       
-      if (b.ycor == ycor - BRADIUS && b.xcor == xcor && b.col == col) {
-        adjacents[0] = b;
-      } else {
-        adjacents[0] = null;
-      }
       
-      if (b.ycor == ycor + BRADIUS && b.xcor == xcor && b.col == col) {
-        adjacents[1] = b;
-      } else {
-        adjacents[1] = null;
-      }
       
-      if (b.xcor == xcor -BRADIUS && b.ycor == ycor && b.col == col) {
-        adjacents[2] = b;
-      } else {
-        adjacents[2] = null;
+      if (b.ycor == ycor - BRADIUS && b.xcor == xcor) {
+        if (b.col == col) {
+          adjacents[0] = b;
+        } else {
+           adjacents[0] = null;
+        }
+        
       }
-      
-      if (b.xcor == xcor + BRADIUS && b.ycor == ycor && b.col == col) {
-        adjacents[3] = b;
-      } else {
-        adjacents[3] = null;
-      }
+        
+        if (b.ycor == ycor + BRADIUS && b.xcor == xcor) {
+        if (b.col == col) {
+          adjacents[1] = b;
+        } else {
+           adjacents[1] = null;
+        }
+        
+        }
+        
+        if (b.xcor == xcor - BRADIUS && b.ycor == ycor) {
+        if (b.col == col) {
+          adjacents[2] = b;
+        } else {
+           adjacents[2] = null;
+        }
+        
+        }
+        
+        if (b.xcor == xcor + BRADIUS && b.ycor == ycor) {
+        if (b.col == col) {
+          adjacents[3] = b;
+        } else {
+           adjacents[3] = null;
+        }
+        
+        }
+        
     
     }
     // loop through adjacent bubbles and add them to the array if they are the same color
   }
   
   public void evaluateCollision(ArrayList<Bubble> allBubbles) {
-    ArrayList<Bubble> bubblesToPop = new ArrayList<Bubble>();
-    collisionHelper(bubblesToPop);
-    System.out.println(bubblesToPop);
+    ArrayList popList = new ArrayList<Bubble>();
+    colHelp(col, popList);
+    if (popList.size() < 3) return;
     for (int i = 0; i < allBubbles.size(); i++) {
-      if (bubblesToPop.contains(allBubbles.get(i))) {
+      if (popList.contains(allBubbles.get(i))) {
         allBubbles.get(i).explode();
         allBubbles.remove(i);
-        i++;
+        i--;
       }
     }
-    
     
   }
   
-  public void collisionHelper(ArrayList<Bubble> arr) {
+  public void colHelp(color seek, ArrayList<Bubble> popList) {
+    if (marked) return;
+    if (this.col != seek) return;
+    popList.add(this);
+    marked = true;
     for (int i = 0; i < adjacents.length; i++) {
-      System.out.println("looping " + adjacents[i]);
       if (adjacents[i] != null) {
-        arr.add(adjacents[i]);
-        adjacents[i].collisionHelper(arr);
+        adjacents[i].colHelp(seek, popList);
       }
     }
   }
+ 
   
   public void snapToGrid() {
     float xR = (xcor)/BRADIUS;
