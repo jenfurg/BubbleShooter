@@ -10,9 +10,9 @@
  
  5/25: Jennifer worked on the the vector, trying to limit its movement and working out a shooting function. 
  
- 5/26: Leo rewrote the shooter display to be a constant length in the direction of the mouse.
+ 5/26: Leo rewrote the shooter display to be a constant length in the direction of the mouse. Jennifer worked on setting up the background formatting. 
 
- 5/27: Leo made initial 50ish bubbles show up upon setup and fixed colors.
+ 5/27: Leo made initial 50ish bubbles show up upon setup and fixed colors. Jennifer worked on the appearance of the bubbles, making sure they fit the screen and appeared as they did in the game. 
  
  5/28: Leo made the shooter smoothly fire a bubble in the direction of the mouse.
 
