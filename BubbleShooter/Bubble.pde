@@ -74,7 +74,6 @@ public class Bubble {
   
   public void colHelp(color seek, ArrayList<Bubble> popList) {
     if (marked) return;
-    if (this.col != seek) return;
     popList.add(this);
     marked = true;
     for (int i = 0; i < adjacents.length; i++) {
