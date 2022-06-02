@@ -23,3 +23,5 @@
  5/31: Leo worked on making bubble shooting screen appear within a larger (currently empty) screen. Jennifer worked on the formatting of the bubble shooter to emulate the real game, started to work on adding buttons, "pause", "play", etc. 
 
  6/1: Leo made bubbles pop if in chains of three or more. Jennifer worked on fixing the buttons, making sure that mouseX and mouseY wouldn't be affected if the buttons were clicked + created a "How To Play" image for pop-up. 
+
+ 6/2: Leo added awarding of points and making a new row appear after a certain amount of failures.
