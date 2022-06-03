@@ -13,7 +13,7 @@ void setup() {
   theGame = new Game();
   
   a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
-  b = theGame.ENDING_Y - 200;
+  b = theGame.ENDING_Y - Bubble.BRADIUS;
   
   for (int i = 0; i < 10; i++) {
     theGame.newBubbleRow();
@@ -55,7 +55,7 @@ void draw() {
    strokeWeight(4);   
    
    float bigR = dist(mouseX, mouseY, a, b);
-   float littleR = 100.0; //adjust this to adjust the shooter length
+   float littleR = 140.0; //adjust this to adjust the shooter length
    
   
    
@@ -95,6 +95,10 @@ void draw() {
     // trace path of bubble as it moves
   }
   if (theGame.gameOver()) {
+    fill(157,200,255);
+     rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
+     fill(0);
+     text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
     // end game
   }
   
