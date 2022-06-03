@@ -23,6 +23,7 @@ void setup() {
 
 void draw() {
   
+  
    background(155,190,240);
    
    fill(157,200,255);
@@ -96,6 +97,13 @@ void draw() {
   if (theGame.gameOver()) {
     // end game
   }
+  
+  // at STARTING_X + 100, ENDING_Y + 100 put nextColors[0]
+  Bubble nextNext = new Bubble(theGame.STARTING_X+100, theGame.ENDING_Y+50, theGame.nextColors[0]);
+  Bubble next = new Bubble(theGame.STARTING_X+200, theGame.ENDING_Y+50, theGame.nextColors[1]);
+  // at STARTING_X + 200, ENDING_Y + 100 put nextColors[1]
+  nextNext.display();
+  next.display();
 
 }
 
