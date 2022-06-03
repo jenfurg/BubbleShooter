@@ -72,7 +72,7 @@ public class Game {
   
   public boolean gameOver() {
     for (int i = 0; i < bubbles.size(); i++) {
-      if (bubbles.get(i).ycor > ENDING_Y) {
+      if (bubbles.get(i).ycor >= ENDING_Y) {
         return true;
       }
     }
