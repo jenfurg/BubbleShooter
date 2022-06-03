@@ -4,12 +4,14 @@ public class Game {
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
   color[] nextColors = new color[3];
-  
+  int newRow = 0;
+  boolean showTut; 
   final static float STARTING_X = Bubble.BRADIUS/2; // also to be changed later
   final float ENDING_X = STARTING_X + 700; // to be changed
   final static float STARTING_Y = Bubble.BRADIUS;
   final float ENDING_Y = height - 100;
   
+
   public Game() {
     for (int i = 0; i < 3; i++) {
       nextColors[i] = makeRandomColor();
@@ -56,6 +58,11 @@ public class Game {
      return c;
   }
   
+  
+   public void helpWindow(){
+    
+   }
+   
   public void newBubbleRow() {
     for (int i = 0; i < bubbles.size(); i++) {
       Bubble b = bubbles.get(i);
@@ -68,6 +75,19 @@ public class Game {
 
     }
   }
+  
+  void start(){
+    theGame = new Game();
+  
+  a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
+  b = theGame.ENDING_Y - 200;
+  
+  for (int i = 0; i < 10; i++) {
+    theGame.newBubbleRow();
+  }
+  
+  }
+  
   
   public boolean gameOver() {
     for (int i = 0; i < bubbles.size(); i++) {
