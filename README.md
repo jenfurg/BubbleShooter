@@ -25,3 +25,5 @@
  6/1: Leo made bubbles pop if in chains of three or more. Jennifer worked on fixing the buttons, making sure that mouseX and mouseY wouldn't be affected if the buttons were clicked + created a "How To Play" image for pop-up. 
 
  6/2: Leo added awarding of points and making a new row appear after a certain amount of failures.
+
+ 6/3: Leo made game over trigger when bubbles reach a certain point.
