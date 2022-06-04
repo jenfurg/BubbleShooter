@@ -107,13 +107,10 @@ public class Bubble {
     int roundedY = round(yR);
     ycor = BRADIUS * roundedY;
     
-    float DNEER = 0;
-    if (theGame.hexShift) DNEER = 1;
-
-    boolean shift = ((ycor - theGame.STARTING_Y) / BRADIUS) % 2 != DNEER;  // this needs to change
+    boolean checkForShift =  ((ycor - theGame.STARTING_Y) / BRADIUS) % 2 == 0;
     
     float p = 0.0;
-    if (shift) p = BRADIUS/2;
+    if (theGame.hexShift == checkForShift) p = BRADIUS/2;
     
     float xR = (xcor-p)/BRADIUS;
     
