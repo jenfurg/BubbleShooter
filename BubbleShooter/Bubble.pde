@@ -103,14 +103,20 @@ public class Bubble {
  
   
   public void snapToGrid() {
-    float xR = (xcor)/BRADIUS;
     float yR = ycor/BRADIUS;
+    int roundedY = round(yR);
+    ycor = BRADIUS * roundedY;
+
+    boolean shift = (ycor / BRADIUS) % 2 == 0;  // this needs to change
+    
+    float p = 0.0;
+    if (shift) p = BRADIUS/2;
+    
+    float xR = (xcor-p)/BRADIUS;
     
     int roundedX = round(xR);
-    int roundedY = round(yR);
     
-    xcor = BRADIUS * roundedX;
-    ycor = BRADIUS * roundedY;
+    xcor = BRADIUS * roundedX+p;
     
     // to be written
   }
