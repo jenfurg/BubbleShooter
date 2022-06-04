@@ -27,3 +27,5 @@
  6/2: Leo added awarding of points and making a new row appear after a certain amount of failures.
 
  6/3: Leo made game over trigger when bubbles reach a certain point.
+ 
+ 6/4: Leo rewrote various functions to work with a hexagonal grid instead of a rectangular grid.
