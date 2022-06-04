@@ -1,6 +1,6 @@
 public class Bubble {
   color col;
-  Bubble[] adjacents = new Bubble[4];
+  Bubble[] adjacents = new Bubble[6];
   float xcor, ycor;
   final static float BRADIUS = 30;
   boolean marked = false;
@@ -17,7 +17,7 @@ public class Bubble {
       
       
       
-      if (b.ycor == ycor - BRADIUS && b.xcor == xcor) {
+      if (b.ycor == ycor - BRADIUS && b.xcor == xcor + BRADIUS/2) {
         if (b.col == col) {
           adjacents[0] = b;
         } else {
@@ -25,17 +25,17 @@ public class Bubble {
         }
         
       }
-        
-        if (b.ycor == ycor + BRADIUS && b.xcor == xcor) {
+      
+      if (b.ycor == ycor - BRADIUS && b.xcor == xcor - BRADIUS/2) {
         if (b.col == col) {
           adjacents[1] = b;
         } else {
            adjacents[1] = null;
         }
         
-        }
+      }
         
-        if (b.xcor == xcor - BRADIUS && b.ycor == ycor) {
+        if (b.ycor == ycor + BRADIUS && b.xcor == xcor + BRADIUS/2) {
         if (b.col == col) {
           adjacents[2] = b;
         } else {
@@ -44,11 +44,29 @@ public class Bubble {
         
         }
         
-        if (b.xcor == xcor + BRADIUS && b.ycor == ycor) {
+        if (b.ycor == ycor + BRADIUS && b.xcor == xcor - BRADIUS/2) {
         if (b.col == col) {
           adjacents[3] = b;
         } else {
            adjacents[3] = null;
+        }
+        
+        }
+        
+        if (b.xcor == xcor - BRADIUS && b.ycor == ycor) {
+        if (b.col == col) {
+          adjacents[4] = b;
+        } else {
+           adjacents[4] = null;
+        }
+        
+        }
+        
+        if (b.xcor == xcor + BRADIUS && b.ycor == ycor) {
+        if (b.col == col) {
+          adjacents[5] = b;
+        } else {
+           adjacents[5] = null;
         }
         
         }
@@ -85,14 +103,23 @@ public class Bubble {
  
   
   public void snapToGrid() {
-    float xR = (xcor)/BRADIUS;
     float yR = ycor/BRADIUS;
+    int roundedY = round(yR);
+    ycor = BRADIUS * roundedY;
+    
+    float DNEER = 0;
+    if (theGame.hexShift) DNEER = 1;
+
+    boolean shift = ((ycor - theGame.STARTING_Y) / BRADIUS) % 2 != DNEER;  // this needs to change
+    
+    float p = 0.0;
+    if (shift) p = BRADIUS/2;
+    
+    float xR = (xcor-p)/BRADIUS;
     
     int roundedX = round(xR);
-    int roundedY = round(yR);
     
-    xcor = BRADIUS * roundedX;
-    ycor = BRADIUS * roundedY;
+    xcor = BRADIUS * roundedX+p;
     
     // to be written
   }
