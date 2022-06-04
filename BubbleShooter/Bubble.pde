@@ -106,8 +106,11 @@ public class Bubble {
     float yR = ycor/BRADIUS;
     int roundedY = round(yR);
     ycor = BRADIUS * roundedY;
+    
+    float DNEER = 0;
+    if (theGame.hexShift) DNEER = 1;
 
-    boolean shift = (ycor / BRADIUS) % 2 == 0;  // this needs to change
+    boolean shift = ((ycor - theGame.STARTING_Y) / BRADIUS) % 2 != DNEER;  // this needs to change
     
     float p = 0.0;
     if (shift) p = BRADIUS/2;
