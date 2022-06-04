@@ -3,6 +3,7 @@ public class Game {
   ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
+  boolean hexShift = false;
   color[] nextColors = new color[3];
   int newRow = 0;
   
@@ -22,7 +23,7 @@ public class Game {
     int k = (int) random(0,6);
     
     color c;
-    
+  // should only choose colors that are still on the screen    
     switch (k) {
       default: c = color(0);
       case 0: 
@@ -63,11 +64,15 @@ public class Game {
       b.ycor += Bubble.BRADIUS; // number is subject to change
     }
     
-    for (float i = STARTING_X+Bubble.BRADIUS/2; i < ENDING_X; i += Bubble.BRADIUS) {
+    float p = 0.0;
+    if (hexShift) p = Bubble.BRADIUS/2;
+    
+    for (float i = p+STARTING_X+Bubble.BRADIUS/2; i < ENDING_X; i += Bubble.BRADIUS) {
       bubbles.add(new Bubble(i, STARTING_Y+Bubble.BRADIUS, nextColors[2])); // to be changed later
       cycleColors();
 
     }
+    hexShift = !hexShift;
   }
   
   public boolean gameOver() {
