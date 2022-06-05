@@ -6,6 +6,14 @@ public class Game {
   boolean hexShift = false;
   color[] nextColors = new color[3];
   int newRow = 0;
+  ArrayList<Integer> colors = new ArrayList<Integer>();
+  
+  color red = color(255,0,0);
+  color pink = color(247, 15, 181);
+  color dBlue = color(0,0,255);
+  color lBlue = color(0,255,255);
+  color yellow = color(255, 255, 0);
+  color green = color(0,255,0);
   
   final static float STARTING_X = Bubble.BRADIUS/2; // also to be changed later
   final float ENDING_X = STARTING_X + 700; // to be changed
@@ -13,6 +21,13 @@ public class Game {
   final float ENDING_Y = height - 100;
   
   public Game() {
+    colors.add(red);
+    colors.add(pink);
+    colors.add(dBlue);
+    colors.add(yellow);
+    colors.add(green);
+    colors.add(green);
+    
     for (int i = 0; i < 3; i++) {
       nextColors[i] = makeRandomColor();
     }
@@ -22,32 +37,8 @@ public class Game {
   public color makeRandomColor() {
     int k = (int) random(0,6);
     
-    color c;
-  // should only choose colors that are still on the screen    
-    switch (k) {
-      default: c = color(0);
-      case 0: 
-        c = color(255, 0, 0); // red
-        break;
-      case 1: 
-        c = color(247, 15, 181); //pink
-        break;
-      case 2: 
-        c = color(0, 0, 255); // dark blue
-        break;
-      case 3: 
-        c = color(0, 255, 255);  // light blue
-        break;
-      case 4: 
-        c = color(255, 255, 0); // yellow
-        break;
-      case 5: 
-        c = color(0,255,0); // green
-        break;
-    }
     
-    // red, pink, light blue, dark blue, yellow, green
-    return c;
+    return colors.get(k);
   }
   
   public color cycleColors() {
