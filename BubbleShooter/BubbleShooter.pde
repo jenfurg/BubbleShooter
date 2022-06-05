@@ -16,7 +16,7 @@ void setup() {
   b = theGame.ENDING_Y - Bubble.BRADIUS;
   
   for (int i = 0; i < 10; i++) {
-    theGame.newBubbleRow();
+    theGame.newBubbleRow(true);
   }
 }
 
@@ -87,7 +87,7 @@ void draw() {
       if (pts == 0) theGame.newRow++;
       theGame.score += 10*pts;
       if (theGame.newRow == 4) { // 4 is subject to change
-      theGame.newBubbleRow();
+      //theGame.newBubbleRow(false); turning this off temporarily so i can test late game measures
       theGame.newRow = 0;
     };
       theGame.awaitingAction = true;
@@ -121,9 +121,9 @@ void mouseClicked() {
  
   if (!theGame.awaitingAction) return;
   else if (mouseY < b & mouseY < theGame.ENDING_Y & mouseX < theGame.ENDING_X) {
-     theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, mouseY);
+     theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors(false)), mouseX, mouseY);
   } else {
-    theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, b);
+    theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors(false)), mouseX, b);
   }
   theGame.awaitingAction = false;
 }

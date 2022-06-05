@@ -14,6 +14,7 @@ public class Game {
   color lBlue = color(0,255,255);
   color yellow = color(255, 255, 0);
   color green = color(0,255,0);
+  color[] allColors = {red, pink, dBlue, lBlue, yellow, green};
   
   final static float STARTING_X = Bubble.BRADIUS/2; // also to be changed later
   final float ENDING_X = STARTING_X + 700; // to be changed
@@ -25,31 +26,46 @@ public class Game {
     colors.add(pink);
     colors.add(dBlue);
     colors.add(yellow);
-    colors.add(green);
+    colors.add(lBlue);
     colors.add(green);
     
     for (int i = 0; i < 3; i++) {
-      nextColors[i] = makeRandomColor();
+      nextColors[i] = makeRandomColor(true);
     }
     // put 3 random colors in nextColors
   }
   
-  public color makeRandomColor() {
-    int k = (int) random(0,6);
+  public color makeRandomColor(boolean initial) {
+    
+    if (initial) return allColors[(int)random(0,6)];
+     
+    colors = new ArrayList<Integer>();
+     for (int i = 0; i < bubbles.size(); i++) {
+       Bubble b = bubbles.get(i);
+       if (colors.size() == 0 || !colors.contains(b.col)) {
+         colors.add(b.col);
+       }
+       if (colors.size() == 6) {i = bubbles.size();}
+     }
+
+    
+    
+    int k = (int) random(0,colors.size());
     
     
     return colors.get(k);
   }
   
-  public color cycleColors() {
+  public color cycleColors(boolean initial) {
     color c = nextColors[2];
      nextColors[2] = nextColors[1];
      nextColors[1] = nextColors[0];
-     nextColors[0] = makeRandomColor();
+     nextColors[0] = makeRandomColor(initial);
      return c;
   }
   
-  public void newBubbleRow() {
+  
+  public void newBubbleRow(boolean initial) {
     for (int i = 0; i < bubbles.size(); i++) {
       Bubble b = bubbles.get(i);
       b.ycor += Bubble.BRADIUS; // number is subject to change
@@ -60,7 +76,7 @@ public class Game {
     
     for (float i = p+STARTING_X+Bubble.BRADIUS/2; i < ENDING_X; i += Bubble.BRADIUS) {
       bubbles.add(new Bubble(i, STARTING_Y+Bubble.BRADIUS, nextColors[2])); // to be changed later
-      cycleColors();
+      cycleColors(initial);
 
     }
     hexShift = !hexShift;
