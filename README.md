@@ -29,3 +29,5 @@
  6/3: Leo made game over trigger when bubbles reach a certain point.
  
  6/4: Leo rewrote various functions to work with a hexagonal grid instead of a rectangular grid.
+ 
+ 6/5: Leo edited the color cycling such that if the player has eliminated the bubbles of a given color from the grid entirely, the player will no longer be supplied with bubbles of that color.
