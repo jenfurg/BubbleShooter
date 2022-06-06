@@ -117,7 +117,6 @@ void draw() {
   // at STARTING_X + 200, ENDING_Y + 100 put nextColors[1]
   nextNext.display();
   next.display();
-<<<<<<< HEAD
   
   }
 
