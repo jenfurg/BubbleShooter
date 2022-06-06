@@ -14,10 +14,10 @@ void setup() {
   theGame = new Game();
   
   a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
-  b = theGame.ENDING_Y - 200;
+  b = theGame.ENDING_Y - Bubble.BRADIUS;
   
   for (int i = 0; i < 10; i++) {
-    theGame.newBubbleRow();
+    theGame.newBubbleRow(true);
   }
 }
 
@@ -56,7 +56,7 @@ void draw() {
    strokeWeight(4);   
    
    float bigR = dist(mouseX, mouseY, a, b);
-   float littleR = 100.0; //adjust this to adjust the shooter length
+   float littleR = 140.0; //adjust this to adjust the shooter length
    
   
    
@@ -88,7 +88,7 @@ void draw() {
       if (pts == 0) theGame.newRow++;
       theGame.score += 10*pts;
       if (theGame.newRow == 4) { // 4 is subject to change
-      theGame.newBubbleRow();
+      theGame.newBubbleRow(false); 
       theGame.newRow = 0;
     };
       theGame.awaitingAction = true;
@@ -96,6 +96,10 @@ void draw() {
     // trace path of bubble as it moves
   }
   if (theGame.gameOver()) {
+    fill(157,200,255);
+     rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
+     fill(0);
+     text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
     // end game
   }
   
@@ -125,9 +129,9 @@ void mouseClicked() {
 
   if (!theGame.awaitingAction) return;
   else if (mouseY < b & mouseY < theGame.ENDING_Y & mouseX < theGame.ENDING_X) {
-     theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, mouseY);
+     theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors(false)), mouseX, mouseY);
   } else {
-    theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors()), mouseX, b);
+    theGame.shooter.shoot(new Bubble(a, b, theGame.cycleColors(false)), mouseX, b);
   }
   theGame.awaitingAction = false;
 }
