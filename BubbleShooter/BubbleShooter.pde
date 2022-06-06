@@ -44,6 +44,18 @@ void draw() {
  
    
    text("Points: " + theGame.score, 810, 200); 
+   
+   
+   if (theGame.gameOver()) {
+    theGame.bubbles = new ArrayList<Bubble>();
+    theGame.nextColors = null;
+    fill(157,200,255);
+     rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
+     fill(0);
+     text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
+     theGame.addHighScore();
+    // need to actually end game (it's still going on behind the rectangle)
+  } else {
   
    
   
@@ -95,20 +107,19 @@ void draw() {
     }
     // trace path of bubble as it moves
   }
-  if (theGame.gameOver()) {
-    fill(157,200,255);
-     rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
-     fill(0);
-     text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
-    // end game
-  }
   
+  
+  
+    
   // at STARTING_X + 100, ENDING_Y + 100 put nextColors[0]
   Bubble nextNext = new Bubble(theGame.STARTING_X+100, theGame.ENDING_Y+50, theGame.nextColors[0]);
   Bubble next = new Bubble(theGame.STARTING_X+200, theGame.ENDING_Y+50, theGame.nextColors[1]);
   // at STARTING_X + 200, ENDING_Y + 100 put nextColors[1]
   nextNext.display();
   next.display();
+  
+  }
+
   if (theGame.showTut)
   image(img,500,375,width/2-50,height/2);
   

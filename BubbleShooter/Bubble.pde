@@ -3,6 +3,7 @@ public class Bubble {
   Bubble[] adjacents = new Bubble[6];
   float xcor, ycor;
   final static float BRADIUS = 30;
+  float explodeRadius = BRADIUS;
   boolean marked = false;
   
   public Bubble(float x, float y, color colla) {
@@ -122,15 +123,18 @@ public class Bubble {
   }
   
   public void explode() {
-  
+    for (int i = 0; i < 50; i++) {
+      explodeRadius *= 1.01;
+      this.display();
+    }
   }
   
   public void display() {
     fill(col);
     strokeWeight(1);
-    ellipse(xcor, ycor, BRADIUS, BRADIUS);
+    ellipse(xcor, ycor, explodeRadius, explodeRadius);
     fill(255);
     strokeWeight(0);
-    ellipse(xcor-(BRADIUS/4), ycor-(BRADIUS/4), (BRADIUS/5), (BRADIUS/5));
+    ellipse(xcor-(explodeRadius/4), ycor-(explodeRadius/4), (explodeRadius/5), (explodeRadius/5));
   }
 }
