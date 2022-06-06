@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 public class Game {
   int score = 0;
   ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
@@ -100,5 +103,17 @@ public class Game {
       }
     }
     return false;
+  }
+  
+  public void addHighScore() {
+    try {
+      File hs = new File("highscores.txt");
+      hs.createNewFile();
+      FileWriter w = new FileWriter("highscores.txt");
+      w.write(""+score);
+      
+    } catch (IOException e) {
+      
+    }
   }
 }
