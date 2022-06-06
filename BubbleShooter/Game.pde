@@ -86,6 +86,7 @@ public class Game {
   }
   
   public boolean gameOver() {
+    if (bubbles.size() == 0) return true;
     for (int i = 0; i < bubbles.size(); i++) {
       if (bubbles.get(i).ycor >= ENDING_Y) {
         return true;
