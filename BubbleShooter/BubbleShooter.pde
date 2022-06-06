@@ -87,7 +87,7 @@ void draw() {
       if (pts == 0) theGame.newRow++;
       theGame.score += 10*pts;
       if (theGame.newRow == 4) { // 4 is subject to change
-      //theGame.newBubbleRow(false); turning this off temporarily so i can test late game measures
+      theGame.newBubbleRow(false); 
       theGame.newRow = 0;
     };
       theGame.awaitingAction = true;
