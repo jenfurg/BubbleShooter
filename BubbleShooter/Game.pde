@@ -9,6 +9,9 @@ public class Game {
   boolean hexShift = false;
   color[] nextColors = new color[3];
   int newRow = 0;
+<<<<<<< HEAD
+  boolean showTut; 
+=======
   ArrayList<Integer> colors = new ArrayList<Integer>();
   
   color red = color(255,0,0);
@@ -19,11 +22,13 @@ public class Game {
   color green = color(0,255,0);
   color[] allColors = {red, pink, dBlue, lBlue, yellow, green};
   
+>>>>>>> 123d0548ea09072a14a0dc93f27f13e5121e1a48
   final static float STARTING_X = Bubble.BRADIUS/2; // also to be changed later
   final float ENDING_X = STARTING_X + 700; // to be changed
   final static float STARTING_Y = Bubble.BRADIUS;
   final float ENDING_Y = height - 100;
   
+
   public Game() {
     colors.add(red);
     colors.add(pink);
@@ -68,7 +73,15 @@ public class Game {
   }
   
   
+<<<<<<< HEAD
+   public void helpWindow(){
+    
+   }
+   
+  public void newBubbleRow() {
+=======
   public void newBubbleRow(boolean initial) {
+>>>>>>> 123d0548ea09072a14a0dc93f27f13e5121e1a48
     for (int i = 0; i < bubbles.size(); i++) {
       Bubble b = bubbles.get(i);
       b.ycor += Bubble.BRADIUS; // number is subject to change
@@ -84,6 +97,19 @@ public class Game {
     }
     hexShift = !hexShift;
   }
+  
+  void start(){
+    theGame = new Game();
+  
+  a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
+  b = theGame.ENDING_Y - 200;
+  
+  for (int i = 0; i < 10; i++) {
+    theGame.newBubbleRow();
+  }
+  
+  }
+  
   
   public boolean gameOver() {
     if (bubbles.size() == 0) return true;

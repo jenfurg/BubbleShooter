@@ -26,4 +26,8 @@
 
  6/2: Leo added awarding of points and making a new row appear after a certain amount of failures.
 
- 6/3: Leo made game over trigger when bubbles reach a certain point.
+ 6/3: Leo made game over trigger when bubbles reach a certain point. Jennifer worked on the "game over" screen functionality.
+ 
+ 6/4: Leo rewrote various functions to work with a hexagonal grid instead of a rectangular grid.
+ 
+ 6/5: Leo edited the color cycling such that if the player has eliminated the bubbles of a given color from the grid entirely, the player will no longer be supplied with bubbles of that color. Jennifer fixed the functions of the buttons to be more accurate to the game, such as improving mouseX and mouseY accuracy
