@@ -48,7 +48,7 @@ void draw() {
    
    if (theGame.gameOver()) {
     theGame.bubbles = new ArrayList<Bubble>();
-    theGame.nextColors = null;
+    theGame.nextColors = new int[3];
     fill(157,200,255);
      rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
      fill(0);
