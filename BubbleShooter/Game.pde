@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 public class Game {
   int score = 0;
   ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
@@ -131,7 +132,10 @@ public class Game {
   
   public void addHighScore() {
     try {
-      File f = new File("./highscores.txt");
+      String j = Paths.get(".").toAbsolutePath().normalize().toString(); 
+     
+      System.out.println(j+"/highscores.txt");
+      File f = new File(j+"/highscores.txt");
       
       FileWriter w = new FileWriter(f, true);
       w.write("\n"+score);
