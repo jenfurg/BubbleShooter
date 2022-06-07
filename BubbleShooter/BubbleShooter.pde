@@ -135,6 +135,7 @@ void mouseClicked() {
   if (theGame.showTut & mouseY >360 & mouseY < 420)
   theGame.showTut = false;
   
+  if (theGame.gameOver()) return;
   
   if (mouseX < theGame.STARTING_X || mouseX > theGame.ENDING_X || mouseY < theGame.STARTING_Y || mouseY > theGame.ENDING_Y) return;
 
