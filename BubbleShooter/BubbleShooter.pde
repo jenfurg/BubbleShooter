@@ -5,7 +5,10 @@ int resetX, resetY;
 int helpX, helpY; 
 int modeX, modeY; // coordinates for the buttons 
 PImage img;
-int s = second();
+int begin; 
+int duration = 10; 
+int time = 10; 
+
 
 void setup() {
   // place a bunch of bubbles
@@ -13,7 +16,7 @@ void setup() {
   img = loadImage("Tutorial.png");
   //ellipse(800,200,40,40); 
   theGame = new Game();
-  
+  begin  = millis(); 
   a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
   b = theGame.ENDING_Y - Bubble.BRADIUS;
   
@@ -22,7 +25,7 @@ void setup() {
     theGame.newBubbleRow(true);
   }
   
-    theGame.regularMode=true; 
+
     
 }
 
@@ -51,7 +54,6 @@ void draw() {
    ellipse(900,230,60,60); 
    fill(255,255,255);
    text("REGULAR",875,235);
-   //text("TIMER",885,235);
    
    //points
    fill(255,255,255);
@@ -123,12 +125,23 @@ void draw() {
   next.display();
   if (theGame.showTut)
   image(img,500,375,width/2-50,height/2);
-  //if (theGame.timedMode) {
-  
-  //}
-  //if (theGame.regularMode)
-  //setup();
-  
+  if (!theGame.timerMode){
+   fill(200,0,0);
+   ellipse(900,230,60,60); 
+   fill(255,255,255);
+   text("REGULAR",875,235);
+  }
+  if (theGame.timerMode) {
+   fill(200,0,0);
+   ellipse(900,230,60,60); 
+   fill(255,255,255);
+   text("TIMER",885,235);
+   fill(255,250,130);
+   while (time>0){
+     time = duration - (millis()-begin)/100;
+     text(time,830,100); 
+  }
+  }
 }
 
 
@@ -140,20 +153,8 @@ void mouseClicked() {
   theGame.showTut = true; 
   if (theGame.showTut & mouseY >360 & mouseY < 420)
   theGame.showTut = false;
-  if (dist(mouseX,mouseY,900,230)<=30 & theGame.timedMode)
-   theGame.regularMode = true; 
-   fill(200,0,0);
-   ellipse(900,230,60,60); 
-   fill(255,255,255);
-   text("REGULAR",875,235);
-
-  if (dist(mouseX,mouseY,900,230)<=30 & theGame.regularMode)
-   theGame.timedMode = true; 
-   fill(200,0,0);
-   ellipse(900,230,60,60); 
-   fill(255,255,255);
-   text("TIMER",885,235);
-
+  if (dist(mouseX,mouseY,900,230)<=30)
+    theGame.timerMode = !theGame.timerMode; 
    
   if (mouseX < theGame.STARTING_X || mouseX > theGame.ENDING_X || mouseY < theGame.STARTING_Y || mouseY > theGame.ENDING_Y) return;
 
