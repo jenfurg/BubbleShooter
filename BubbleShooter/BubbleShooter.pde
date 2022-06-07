@@ -5,6 +5,7 @@ int resetX, resetY;
 int helpX, helpY; 
 int modeX, modeY; // coordinates for the buttons 
 PImage img;
+int s = second();
 
 void setup() {
   // place a bunch of bubbles
@@ -16,9 +17,13 @@ void setup() {
   a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
   b = theGame.ENDING_Y - Bubble.BRADIUS;
   
+  
   for (int i = 0; i < 10; i++) {
     theGame.newBubbleRow(true);
   }
+  
+    theGame.regularMode=true; 
+    
 }
 
 
@@ -39,10 +44,17 @@ void draw() {
    fill(0,200,200);
    ellipse(875,300,60,60); 
    fill(255,255,255);
-   //textFont(mono);
    text("HELP",860,305);
- 
    
+   //mode button
+   fill(200,0,0);
+   ellipse(900,230,60,60); 
+   fill(255,255,255);
+   text("REGULAR",875,235);
+   //text("TIMER",885,235);
+   
+   //points
+   fill(255,255,255);
    text("Points: " + theGame.score, 810, 200); 
   
    
@@ -111,6 +123,11 @@ void draw() {
   next.display();
   if (theGame.showTut)
   image(img,500,375,width/2-50,height/2);
+  //if (theGame.timedMode) {
+  
+  //}
+  //if (theGame.regularMode)
+  //setup();
   
 }
 
@@ -123,8 +140,21 @@ void mouseClicked() {
   theGame.showTut = true; 
   if (theGame.showTut & mouseY >360 & mouseY < 420)
   theGame.showTut = false;
-  
-  
+  if (dist(mouseX,mouseY,900,230)<=30 & theGame.timedMode)
+   theGame.regularMode = true; 
+   fill(200,0,0);
+   ellipse(900,230,60,60); 
+   fill(255,255,255);
+   text("REGULAR",875,235);
+
+  if (dist(mouseX,mouseY,900,230)<=30 & theGame.regularMode)
+   theGame.timedMode = true; 
+   fill(200,0,0);
+   ellipse(900,230,60,60); 
+   fill(255,255,255);
+   text("TIMER",885,235);
+
+   
   if (mouseX < theGame.STARTING_X || mouseX > theGame.ENDING_X || mouseY < theGame.STARTING_Y || mouseY > theGame.ENDING_Y) return;
 
   if (!theGame.awaitingAction) return;
