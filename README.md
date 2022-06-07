@@ -33,3 +33,5 @@
  6/5: Leo edited the color cycling such that if the player has eliminated the bubbles of a given color from the grid entirely, the player will no longer be supplied with bubbles of that color. Jennifer fixed the functions of the buttons to be more accurate to the game, such as improving mouseX and mouseY accuracy
  
  6/6: Leo modified the game over screen and gave the bubbles a popping animation.
+
+ 6/7: Leo worked on storing high scores in a text file.
