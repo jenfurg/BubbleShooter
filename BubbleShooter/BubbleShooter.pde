@@ -53,8 +53,7 @@ void draw() {
      rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
      fill(0);
      text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
-     theGame.addHighScore();
-    // need to actually end game (it's still going on behind the rectangle)
+     if (!theGame.storedMostRecentScore) theGame.addHighScore();
   } else {
   
    
