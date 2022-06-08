@@ -13,6 +13,7 @@ public class Game {
   boolean showTut; 
   ArrayList<Integer> colors = new ArrayList<Integer>();
   boolean storedMostRecentScore;
+  int poppingStreak = 0;
   
   color red = color(255,0,0);
   color pink = color(247, 15, 181);

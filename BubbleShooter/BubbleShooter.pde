@@ -96,8 +96,20 @@ void draw() {
       theGame.bubbles.add(fired);
       fired.evaluateAdjacents(theGame.bubbles);
       int pts = fired.evaluateCollision(theGame.bubbles);
-      if (pts == 0) theGame.newRow++;
-      theGame.score += 10*pts;
+      if (pts == 0) {
+      theGame.newRow++;
+      theGame.poppingStreak = 0;
+      } else {
+        theGame.poppingStreak++;
+      }
+      
+      if (theGame.poppingStreak == 5) {
+        theGame.score += 100*pts;
+        theGame.poppingStreak = 0;
+      } else {
+        theGame.score += 10*pts;
+      }
+     
       if (theGame.newRow == 4) { // 4 is subject to change
       theGame.newBubbleRow(false); 
       theGame.newRow = 0;
