@@ -6,8 +6,8 @@ int helpX, helpY;
 int modeX, modeY; // coordinates for the buttons 
 PImage img;
 int begin; 
-int duration; 
-int time; 
+int duration=10; 
+int time=10; 
 
 
 void setup() {
@@ -47,8 +47,8 @@ void draw() {
    fill(200,0,0);
    ellipse(900,230,60,60); 
    fill(255,255,255);
-   text("REGULAR",875,235);
-   
+   //text("REGULAR",875,235);
+   text("TIMER",885,235);
    //points
    fill(255,255,255);
    text("Points: " + theGame.score, 810, 200); 
@@ -134,27 +134,30 @@ void draw() {
    fill(200,0,0);
    ellipse(900,230,60,60); 
    fill(255,255,255);
-   text("REGULAR",875,235);
+   text("TIMER",885,235);
   }
   if (theGame.timerMode) {
-    time = 10;
-    duration = 10;
+   begin  = millis(); 
    fill(200,0,0);
    ellipse(900,230,60,60); 
    fill(255,255,255);
-   text("TIMER",885,235);
+   text("REGULAR",875,235);
    fill(255,250,130);
    if (time>0){
      time = duration - (millis()-begin)/1000;
      text(time,830,100); 
    }
-    else{
+    if (time<0 & time > -1){
      fill(157,200,255);
      rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
      fill(0);
      text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
-      
+      time = 10; 
+      duration = 10;
   }
+    if (time<-1) {
+      setup();
+    }
   
   
   }
