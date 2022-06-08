@@ -7,6 +7,7 @@ public class Game {
   ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
+  boolean timerMode; 
   boolean hexShift = false;
   color[] nextColors = new color[3];
   int newRow = 0;
@@ -81,6 +82,7 @@ public class Game {
    
 
   public void newBubbleRow(boolean initial) {
+
     for (int i = 0; i < bubbles.size(); i++) {
       Bubble b = bubbles.get(i);
       b.ycor += Bubble.BRADIUS; // number is subject to change
@@ -131,6 +133,7 @@ public class Game {
     return false;
   }
   
+
   public void addHighScore() {
     try {
       String j = Paths.get(".").toAbsolutePath().normalize().toString(); 
