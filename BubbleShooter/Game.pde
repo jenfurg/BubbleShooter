@@ -3,7 +3,7 @@ public class Game {
   ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
-  boolean timedMode, regularMode; 
+  boolean timerMode; 
   boolean hexShift = false;
   color[] nextColors = new color[3];
   int newRow = 0;
