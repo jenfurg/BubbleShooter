@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 public class Game {
   int score = 0;
   ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
@@ -8,7 +11,6 @@ public class Game {
   color[] nextColors = new color[3];
   int newRow = 0;
   boolean showTut; 
-
   ArrayList<Integer> colors = new ArrayList<Integer>();
   
   color red = color(255,0,0);
@@ -68,6 +70,11 @@ public class Game {
      return c;
   }
   
+  
+   public void helpWindow(){
+    
+   }
+   
 
   public void newBubbleRow(boolean initial) {
 
@@ -101,6 +108,7 @@ public class Game {
   
   
   public boolean gameOver() {
+    if (bubbles.size() == 0) return true;
     for (int i = 0; i < bubbles.size(); i++) {
       if (bubbles.get(i).ycor >= ENDING_Y) {
         return true;
@@ -120,4 +128,16 @@ public class Game {
     return false;
   }
   
+
+  public void addHighScore() {
+    try {
+      File hs = new File("highscores.txt");
+      hs.createNewFile();
+      FileWriter w = new FileWriter("highscores.txt");
+      w.write(""+score);
+      
+    } catch (IOException e) {
+      
+    }
   }
+}
