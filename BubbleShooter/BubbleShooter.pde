@@ -6,8 +6,8 @@ int helpX, helpY;
 int modeX, modeY; // coordinates for the buttons 
 PImage img;
 int begin; 
-int duration = 10; 
-int time = 10; 
+int duration; 
+int time; 
 
 
 void setup() {
@@ -20,19 +20,13 @@ void setup() {
   a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
   b = theGame.ENDING_Y - Bubble.BRADIUS;
   
-  
   for (int i = 0; i < 10; i++) {
     theGame.newBubbleRow(true);
-  }
-  
-
-    
+  }  
 }
 
 
 void draw() {
-  
-  
    background(155,190,240);
    
    fill(157,200,255);
@@ -132,15 +126,26 @@ void draw() {
    text("REGULAR",875,235);
   }
   if (theGame.timerMode) {
+    time = 10;
+    duration = 10;
    fill(200,0,0);
    ellipse(900,230,60,60); 
    fill(255,255,255);
    text("TIMER",885,235);
    fill(255,250,130);
-   while (time>0){
-     time = duration - (millis()-begin)/100;
+   if (time>0){
+     time = duration - (millis()-begin)/1000;
      text(time,830,100); 
+   }
+    else{
+     fill(157,200,255);
+     rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
+     fill(0);
+     text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
+      
   }
+  
+  
   }
 }
 
