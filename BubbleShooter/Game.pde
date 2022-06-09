@@ -1,17 +1,20 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 public class Game {
   int score = 0;
   ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
-  boolean timerMode; 
+  boolean timerMode = false; 
   boolean hexShift = false;
   color[] nextColors = new color[3];
   int newRow = 0;
   boolean showTut; 
   ArrayList<Integer> colors = new ArrayList<Integer>();
+  boolean storedMostRecentScore;
+  int poppingStreak = 0;
   
   color red = color(255,0,0);
   color pink = color(247, 15, 181);
@@ -38,6 +41,8 @@ public class Game {
     for (int i = 0; i < 3; i++) {
       nextColors[i] = makeRandomColor(true);
     }
+    
+    storedMostRecentScore = false;
     // put 3 random colors in nextColors
   }
   
@@ -131,13 +136,17 @@ public class Game {
 
   public void addHighScore() {
     try {
-      File hs = new File("highscores.txt");
-      hs.createNewFile();
-      FileWriter w = new FileWriter("highscores.txt");
-      w.write(""+score);
+      String j = Paths.get(".").toAbsolutePath().normalize().toString(); 
+     
+      File f = new File(j+"/highscores.txt");
+      
+      FileWriter w = new FileWriter(f, true);
+      w.write("\n"+score);
+      w.close();
+      storedMostRecentScore = true;
       
     } catch (IOException e) {
-      
+      System.out.println("couldn't do the file thing");
     }
   }
 }
