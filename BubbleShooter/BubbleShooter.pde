@@ -20,6 +20,16 @@ void place() {
   } 
 }
 
+void endGame() {
+    theGame.bubbles = new ArrayList<Bubble>();
+    theGame.nextColors = new int[3];
+    fill(157,200,255);
+     rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
+     fill(0);
+     text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
+     if (!theGame.storedMostRecentScore) theGame.addHighScore();
+}
+
 
 void setup() {
   // place a bunch of bubbles
@@ -60,13 +70,7 @@ void draw() {
    
    
    if (theGame.gameOver()) {
-    theGame.bubbles = new ArrayList<Bubble>();
-    theGame.nextColors = new int[3];
-    fill(157,200,255);
-     rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
-     fill(0);
-     text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
-     if (!theGame.storedMostRecentScore) theGame.addHighScore();
+    endGame();
   } else {
   
    
@@ -153,8 +157,6 @@ void draw() {
    text("REGULAR",875,235);
   }
   if (theGame.timerMode) {
-    time = 10;
-    duration = 10;
    fill(200,0,0);
    ellipse(900,230,60,60); 
    fill(255,255,255);
@@ -165,12 +167,7 @@ void draw() {
      text(time,830,100); 
    }
     else if (time <= 0) {
-     fill(157,200,255);
-     rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
-     fill(0);
-     text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
-     
-     // make a game over function and call it both times
+     endGame();
       
   }
   
@@ -196,6 +193,8 @@ void mouseClicked() {
 // setup except new Game()
     place();
     begin  = millis();
+    time = 10;
+    duration = 10;
   };
    
   if (mouseX < theGame.STARTING_X || mouseX > theGame.ENDING_X || mouseY < theGame.STARTING_Y || mouseY > theGame.ENDING_Y) return;
