@@ -7,7 +7,7 @@ public class Game {
   ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
   Shooter shooter = new Shooter();
   boolean awaitingAction = true;
-  boolean timerMode; 
+  boolean timerMode = false; 
   boolean hexShift = false;
   color[] nextColors = new color[3];
   int newRow = 0;
@@ -138,7 +138,6 @@ public class Game {
     try {
       String j = Paths.get(".").toAbsolutePath().normalize().toString(); 
      
-      System.out.println(j+"/highscores.txt");
       File f = new File(j+"/highscores.txt");
       
       FileWriter w = new FileWriter(f, true);
