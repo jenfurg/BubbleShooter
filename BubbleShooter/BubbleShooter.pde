@@ -16,7 +16,6 @@ void setup() {
   img = loadImage("Tutorial.png");
   //ellipse(800,200,40,40); 
   theGame = new Game();
-  begin  = millis(); 
   a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
   b = theGame.ENDING_Y - Bubble.BRADIUS;
   
@@ -155,15 +154,17 @@ void draw() {
    fill(255,255,255);
    text("TIMER",885,235);
    fill(255,250,130);
-   if (time>0){
+   if (time > 0){
      time = duration - (millis()-begin)/1000;
      text(time,830,100); 
    }
-    else{
+    else if (time <= 0) {
      fill(157,200,255);
      rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
      fill(0);
      text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
+     
+     // make a game over function and call it both times
       
   }
   
@@ -185,6 +186,7 @@ void mouseClicked() {
   
   if (dist(mouseX,mouseY,900,230)<=30)
     theGame.timerMode = !theGame.timerMode; 
+  if (theGame.timerMode) begin  = millis();
    
   if (mouseX < theGame.STARTING_X || mouseX > theGame.ENDING_X || mouseY < theGame.STARTING_Y || mouseY > theGame.ENDING_Y) return;
 
