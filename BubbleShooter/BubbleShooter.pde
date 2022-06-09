@@ -9,6 +9,17 @@ int begin;
 int duration; 
 int time; 
 
+void place() {
+  theGame.bubbles = new ArrayList<Bubble>();
+  theGame.score = 0;
+  a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
+  b = theGame.ENDING_Y - Bubble.BRADIUS;
+  
+  for (int i = 0; i < 10; i++) {
+    theGame.newBubbleRow(true);
+  } 
+}
+
 
 void setup() {
   // place a bunch of bubbles
@@ -16,12 +27,7 @@ void setup() {
   img = loadImage("Tutorial.png");
   //ellipse(800,200,40,40); 
   theGame = new Game();
-  a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
-  b = theGame.ENDING_Y - Bubble.BRADIUS;
-  
-  for (int i = 0; i < 10; i++) {
-    theGame.newBubbleRow(true);
-  }  
+  place();
 }
 
 
@@ -176,7 +182,7 @@ void draw() {
 
 void mouseClicked() {
   if (dist(mouseX,mouseY,825,250)<=30)
-  setup(); 
+  place(); 
   if (dist(mouseX,mouseY,875,300)<=30)
   theGame.showTut = true; 
   if (theGame.showTut & mouseY >360 & mouseY < 420)
@@ -186,7 +192,11 @@ void mouseClicked() {
   
   if (dist(mouseX,mouseY,900,230)<=30)
     theGame.timerMode = !theGame.timerMode; 
-  if (theGame.timerMode) begin  = millis();
+  if (theGame.timerMode) {
+// setup except new Game()
+    place();
+    begin  = millis();
+  };
    
   if (mouseX < theGame.STARTING_X || mouseX > theGame.ENDING_X || mouseY < theGame.STARTING_Y || mouseY > theGame.ENDING_Y) return;
 
