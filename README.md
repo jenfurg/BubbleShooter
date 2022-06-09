@@ -35,3 +35,5 @@
  6/6: Leo modified the game over screen and gave the bubbles a popping animation. Jennifer started to work on the timer mode, adding a button that an switch between mode. 
 
  6/7: Leo worked on storing high scores in a text file. Jennifer worked more on the timer mode. 
+ 
+ 6/9: Leo got timer mode working.
