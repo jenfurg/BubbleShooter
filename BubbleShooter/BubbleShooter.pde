@@ -28,6 +28,7 @@ void endGame() {
      fill(0);
      text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
      if (!theGame.storedMostRecentScore) theGame.addHighScore();
+     text("YOU SCORED " + theGame.score, (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2 + 20);
 }
 
 
@@ -187,15 +188,15 @@ void mouseClicked() {
   
   if (theGame.gameOver()) return;
   
-  if (dist(mouseX,mouseY,900,230)<=30)
+  if (dist(mouseX,mouseY,900,230)<=30) {
     theGame.timerMode = !theGame.timerMode; 
-  if (theGame.timerMode) {
-// setup except new Game()
-    place();
-    begin  = millis();
-    time = 10;
-    duration = 10;
-  };
+    if (theGame.timerMode) {
+      place();
+      begin  = millis();
+      time = 60;
+      duration = 60;
+  }
+  }
    
   if (mouseX < theGame.STARTING_X || mouseX > theGame.ENDING_X || mouseY < theGame.STARTING_Y || mouseY > theGame.ENDING_Y) return;
 
