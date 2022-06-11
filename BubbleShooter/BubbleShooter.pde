@@ -14,6 +14,7 @@ void place() {
     theGame.cycleColors(true);
   }
   theGame.bubbles = new ArrayList<Bubble>();
+  theGame.storedMostRecentScore = false;
   theGame.score = 0;
   a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
   b = theGame.ENDING_Y - Bubble.BRADIUS;
@@ -32,6 +33,12 @@ void endGame() {
     text("GAME OVER", theGame.endX, theGame.endY);
     if (!theGame.storedMostRecentScore) theGame.addHighScore();
     text("YOU SCORED " + theGame.score, theGame.endX, theGame.endY + 20);
+    int[] scores = theGame.getHighScores();
+    text("HIGH SCORES:",theGame.endX, theGame.endY+40);
+    for (int i = 0; i < scores.length; i++) {
+      int sco = scores[i];
+      text(""+sco, theGame.endX,theGame.endY+60+i*20); 
+    }
 }
 
 
