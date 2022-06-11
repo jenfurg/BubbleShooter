@@ -1,7 +1,9 @@
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Paths;
+import java.util.Collections;
 public class Game {
   int score = 0;
   ArrayList<Bubble> bubbles = new ArrayList<Bubble>();
@@ -28,6 +30,10 @@ public class Game {
   final float ENDING_X = STARTING_X + 700; // to be changed
   final static float STARTING_Y = Bubble.BRADIUS;
   final float ENDING_Y = height - 100;
+  
+  final float endX = (STARTING_X+ENDING_X)/2;
+  final float endY = (STARTING_Y+ENDING_Y)/2 - 50;
+
   
 
   public Game() {
@@ -135,18 +141,49 @@ public class Game {
   
 
   public void addHighScore() {
-    try {
-      String j = Paths.get(".").toAbsolutePath().normalize().toString(); 
-     
-      File f = new File(j+"/highscores.txt");
+    if (score == 0) return;
+    try {     
+      File f = new File("highscores.txt");
       
       FileWriter w = new FileWriter(f, true);
-      w.write("\n"+score);
+      w.write(score+"\n");
       w.close();
       storedMostRecentScore = true;
       
     } catch (IOException e) {
       System.out.println("couldn't do the file thing");
     }
+  }
+  
+  public int[] getHighScores() {
+    int[] k = new int[5];
+    
+    try {
+      File f = new File("highscores.txt");
+      Scanner p = new Scanner(f);
+      ArrayList<Integer> allscores = new ArrayList<Integer>();
+
+      
+      while (p.hasNextLine()) {
+        String q = p.nextLine();
+        if (q.length() > 0) {
+          allscores.add(Integer.parseInt(q));
+        }
+      }
+      
+      Collections.sort(allscores);
+      Collections.reverse(allscores);
+      
+      int z = min(5, allscores.size());
+      
+      for (int i = 0; i < z; i++) {
+        k[i] = allscores.get(i);
+      }
+      
+    } catch (FileNotFoundException e) {
+      return k;
+    }
+    
+    return k;
   }
 }
