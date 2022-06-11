@@ -37,3 +37,5 @@
  6/7: Leo worked on storing high scores in a text file. Jennifer worked more on the timer mode. 
  
  6/9: Leo got timer mode working.
+ 
+ 6/10: Leo completed storing of high scores.
