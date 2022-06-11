@@ -10,6 +10,9 @@ int duration;
 int time; 
 
 void place() {
+  for (int i = 0; i < 3; i++) {
+    theGame.cycleColors(true);
+  }
   theGame.bubbles = new ArrayList<Bubble>();
   theGame.score = 0;
   a = (theGame.STARTING_X + theGame.ENDING_X)/2 + 20;
@@ -24,11 +27,11 @@ void endGame() {
     theGame.bubbles = new ArrayList<Bubble>();
     theGame.nextColors = new int[3];
     fill(157,200,255);
-     rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
-     fill(0);
-     text("GAME OVER YOU LOSE", (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2);
-     if (!theGame.storedMostRecentScore) theGame.addHighScore();
-     text("YOU SCORED " + theGame.score, (theGame.STARTING_X+theGame.ENDING_X)/2, (theGame.STARTING_Y+theGame.ENDING_Y)/2 + 20);
+    rect(theGame.STARTING_X, theGame.STARTING_Y, theGame.ENDING_X, theGame.ENDING_Y);
+    fill(0);
+    text("GAME OVER", theGame.endX, theGame.endY);
+    if (!theGame.storedMostRecentScore) theGame.addHighScore();
+    text("YOU SCORED " + theGame.score, theGame.endX, theGame.endY + 20);
 }
 
 
@@ -155,13 +158,13 @@ void draw() {
    fill(200,0,0);
    ellipse(900,230,60,60); 
    fill(255,255,255);
-   text("REGULAR",875,235);
+   text("TIMER",885,235);
   }
   if (theGame.timerMode) {
    fill(200,0,0);
    ellipse(900,230,60,60); 
    fill(255,255,255);
-   text("TIMER",885,235);
+   text("REGULAR",875,235);
    fill(255,250,130);
    if (time > 0){
      time = duration - (millis()-begin)/1000;

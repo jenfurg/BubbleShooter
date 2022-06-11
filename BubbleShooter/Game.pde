@@ -29,6 +29,10 @@ public class Game {
   final static float STARTING_Y = Bubble.BRADIUS;
   final float ENDING_Y = height - 100;
   
+  final float endX = (STARTING_X+ENDING_X)/2;
+  final float endY = (STARTING_Y+ENDING_Y)/2;
+
+  
 
   public Game() {
     colors.add(red);
@@ -135,10 +139,9 @@ public class Game {
   
 
   public void addHighScore() {
-    try {
-      String j = Paths.get(".").toAbsolutePath().normalize().toString(); 
-     
-      File f = new File(j+"/highscores.txt");
+    if (score == 0) return;
+    try {     
+      File f = new File("highscores.txt");
       
       FileWriter w = new FileWriter(f, true);
       w.write("\n"+score);
@@ -148,5 +151,11 @@ public class Game {
     } catch (IOException e) {
       System.out.println("couldn't do the file thing");
     }
+  }
+  
+  public String getHighScores() {
+    String k = "";
+    
+    return k;
   }
 }
